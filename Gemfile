@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem "koala"
-
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:

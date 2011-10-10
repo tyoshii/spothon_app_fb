@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-SpothonAppFb::Application.config.secret_token = '41e44ac7892c833edc37870ca120ab9066ab3bbfb430a6fae8b6a60cb67f3397721002f2d873172e372664c8239a241b3b6f4c5617600dfa68d900a4cc201dd9'
+SpothonAppFb::Application.config.secret_token = '0679f618daeedc4954707a4746086c8aaac25fe9276702822907cf0931a23b5ac46ab304fd7f829b82f0bce4d6f4c3c6c8a3b87d58be908bb81063ebd481f574'
