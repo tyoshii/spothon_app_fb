@@ -1,9 +1,9 @@
 development:
-  app_id: "143070259119071"
-  secret_key: "2ce710f8e7e70705e41193db0cf93283"
+  app_id: "287808151247290"
+  secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
 test:
-  app_id: "143070259119071"
-  secret_key: "2ce710f8e7e70705e41193db0cf93283"
+  app_id: "287808151247290"
+  secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
 production:
-  app_id: "143070259119071"
-  secret_key: "2ce710f8e7e70705e41193db0cf93283"
+  app_id: "287808151247290"
+  secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
