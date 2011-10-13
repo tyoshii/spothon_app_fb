@@ -1,7 +1,11 @@
 source 'http://rubygems.org'
 
-gem "koala"
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too
+  gem 'pg'
+end
 
+gem "koala"
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
