@@ -9,22 +9,33 @@ class VotesController < ApplicationController
   # GET /votes
   def index
 
-      require "pp"
-      pp @facebook_cookies
-    
     if @facebook_cookies.nil?
       render :index
     else
 
-          access_token = @facebook_cookies['access_token']
+      access_token = @facebook_cookies['access_token']
       graph = Koala::Facebook::GraphAPI.new(access_token)
       @friends = graph.get_object("me/friends")
-
-      require "pp"
-      pp @friends
 
       render :votes
     end
   end
 
+  # GET /votes/test
+  def test
+
+    puts Facebook::APP_ID
+
+    if @facebook_cookies.nil?
+      render :index
+    else
+
+      test_user = open("https://graph.facebook.com/"){|t|
+        ActiveSupport::JSON.decode(t.read)
+      }
+    
+      require 'pp'
+      pp test_user
+    end
+  end
 end
