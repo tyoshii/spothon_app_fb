@@ -30,10 +30,20 @@ class VotesController < ApplicationController
       render :index
     else
 
-      test_user = open("https://graph.facebook.com/"){|t|
-        ActiveSupport::JSON.decode(t.read)
+      url = 'https://graph.facebook.com/'
+      url << Facebook::APP_ID
+      url << '/accounts/test-users?installed=true&name=HogeFuga&'
+      url << 'permissions=publish_stream,email,offline_access,read_stream&'
+      url << 'method=post&'
+      url << Facebook::SECRET
+
+      test_user = open( url ){|t| 
+        ActiveSupport::JSON.decode(t.read) 
       }
-    
+      #=>{"id"=>"id", "login_url"=>"url", "access_token" =>"access_token"}      
+      
+
+
       require 'pp'
       pp test_user
     end
