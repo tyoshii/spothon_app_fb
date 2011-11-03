@@ -17,6 +17,9 @@ class VotesController < ApplicationController
       graph = Koala::Facebook::GraphAPI.new(access_token)
       @friends = graph.get_object("me/friends")
 
+      require 'pp'
+      pp @friends
+
       render :votes
     end
   end
