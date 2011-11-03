@@ -1,1 +1,16 @@
-<%= pp @friends %>
+<div id="question">
+    <span id="left-question"></span>
+</div>
+
+<% @target.each{|t| %>
+<div id="<%= t['id'] %>" class="user">
+<div class="right">
+    <img class="user-img" src="<%= t['right']['img'] %>">
+    <span class="user-name"><%= t['right']['name'] %></span>
+</div>
+<div class="left">
+    <img class="user-img" src="<%= t['left']['img'] %>">
+    <span class="user-name"><%= t['left']['name'] %></span>
+</div>
+</div>
+<% } %>
