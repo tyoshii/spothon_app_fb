@@ -1,16 +1,32 @@
-<div id="question">
-    <span id="left-question"></span>
+<% image_tag("background0_0.png") %>
+
+<div id="question">残り<br>
+
+<div id="left-question">
+    <span id="left-question-num">5</span>問
+</div>
+    
+<div id="question-word">
+<div id="q-1" class="q-word">野球が好きなのはどっち？</div>
+<div id="q-2" class="q-word">バスケが好きなのはどっち？</div>
+<div id="q-3" class="q-word">サッカーが好きなのはどっち？</div>
+<div id="q-4" class="q-word">ラグビーが好きなのはどっち？</div>
+<div id="q-5" class="q-word">ゴルフが好きなのはどっち？</div>
+</div>
+
 </div>
 
 <% @target.each{|t| %>
-<div id="<%= t['id'] %>" class="user">
+<div id="user-<%= t['id'] %>" class="user">
 <div class="right">
     <img class="user-img" src="<%= t['right']['img'] %>">
     <span class="user-name"><%= t['right']['name'] %></span>
+    <span class="sig"><%= t['right']['sig'] %></span>
 </div>
 <div class="left">
     <img class="user-img" src="<%= t['left']['img'] %>">
     <span class="user-name"><%= t['left']['name'] %></span>
+    <span class="sig"><%= t['left']['sig'] %></span>
 </div>
 </div>
 <% } %>
