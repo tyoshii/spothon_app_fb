@@ -1,5 +1,9 @@
-
 $(function() {
+
+  function get_category () {
+    var q_num = $("#left-question-num").text();
+    return $("#q-" + q_num).find("span").attr("class");
+  }
 
   function decrement_q () {
     var q = $("#left-question-num");
@@ -17,7 +21,7 @@ $(function() {
   
     $("#q-"    + id).css("display", "block");
     $("#user-" + id).css("display", "block");
-    $(".sig").attr("style", "display:none");
+    $(".hidden").attr("style", "display:none");
   }
 
 
@@ -29,16 +33,32 @@ $(function() {
   $(".left").hover( to_light, to_white );
 
   // click user
-  $(".right").click(
-    function() {
-      var sig = $(this).find(".sig").text();
+  var click_func = function() {
+    var post_data = {
+      "id": $(this).find(".id").text(), 
+      "sig": $(this).find(".sig").text(),
+      "category": get_category()
+    };
+  
+    console.log(post_data);
 
-      // ajax post sig
+    // ajax post id, category, sig
+    $.ajax({
+      type: "POST",
+      url: location.href,
+      data: post_data, 
+      async: true,
+      complete: function(r, s) {
+        console.log(r);
+        console.log(s);
+      }
+    }); 
 
-      decrement_q();
-      next();
-    }
-  );
+    decrement_q();
+    next();
+  }
+  $(".right").click( click_func );
+  $(".left").click( click_func );
   
   // init
   next();

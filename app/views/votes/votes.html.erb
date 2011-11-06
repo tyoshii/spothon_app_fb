@@ -7,11 +7,11 @@
 </div>
     
 <div id="question-word">
-<div id="q-1" class="q-word">野球が好きなのはどっち？</div>
+<div id="q-1" class="q-word"><span class="baseball">野球が好きなのはどっち？</span></div>
 <div id="q-2" class="q-word">バスケが好きなのはどっち？</div>
 <div id="q-3" class="q-word">サッカーが好きなのはどっち？</div>
 <div id="q-4" class="q-word">ラグビーが好きなのはどっち？</div>
-<div id="q-5" class="q-word">ゴルフが好きなのはどっち？</div>
+<div id="q-5" class="q-word"><span class="golf">ゴルフが好きなのはどっち？</span></div>
 </div>
 
 </div>
@@ -21,12 +21,18 @@
 <div class="right">
     <img class="user-img" src="<%= t['right']['img'] %>">
     <span class="user-name"><%= t['right']['name'] %></span>
-    <span class="sig"><%= t['right']['sig'] %></span>
+    <div class="hidden">
+        <span class="sig"><%= t['right']['sig'] %></span>
+        <span class="id"><%= t['right']['id'] %></span>
+    </div>
 </div>
 <div class="left">
     <img class="user-img" src="<%= t['left']['img'] %>">
     <span class="user-name"><%= t['left']['name'] %></span>
-    <span class="sig"><%= t['left']['sig'] %></span>
+    <div class="hidden">
+        <span class="sig"><%= t['left']['sig'] %></span>
+        <span class="id"><%= t['left']['id'] %></span>
+    </div>
 </div>
 </div>
 <% } %>

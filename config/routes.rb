@@ -1,7 +1,6 @@
 SpothonAppFb::Application.routes.draw do
 
-  match 'votes' => 'votes#index'  
-  match 'votes/test' => 'votes#test'
+  resources :votes  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

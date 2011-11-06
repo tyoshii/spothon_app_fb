@@ -1,5 +1,4 @@
 require 'openssl'
-# -*- coding: utf-8 -*-
 
 class VotesController < ApplicationController
 
@@ -29,6 +28,22 @@ class VotesController < ApplicationController
       false 
   end 
 
+  # POST /votes
+  def create
+  
+    v = Vote.find( params[:id] ) 
+    rescue
+    if v
+      require "pp"
+      pp v
+    else
+      v = Vote.new(:id => params[:id], params[:category] => 1 )
+      v.save
+    end 
+    
+    render :index
+  end
+
   # GET /votes
   def index
     if @facebook_cookies.nil?
@@ -54,11 +69,13 @@ class VotesController < ApplicationController
         @target << {
           'id' => loop_count,
           'right' => {
+            'id'    => f1['id'],
             'name'  => f1['name'],
             'img'   => 'http://graph.facebook.com/' << f1['id'] << '/picture',
             'sig'   => encrypt( f1['id'].to_s + Time.current.to_i.to_s ) 
           },
           'left' => {
+            'id'    => f2['id'],
             'name'  => f2['name'],
             'img'   => 'http://graph.facebook.com/' << f2['id'] << '/picture',
             'sig'   => encrypt( f2['id'].to_s + Time.current.to_i.to_s )
