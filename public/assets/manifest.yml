@@ -1,6 +1,7 @@
 ---
+background0_0.png: background0_0-0ed18bc70c48e035ebbd9127d142c38a.png
 rails.png: rails-bd9ad5a560b5a3a7be0808c5cd76a798.png
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
 jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
-application.js: application-a552e1db33b8be6a42eedf1261916f3c.js
-application.css: application-8af74128f904600e41a6e39241464e03.css
+application.js: application-900f0f703210c222cb577bd060de583d.js
+application.css: application-876f8b5f48e9f0ca025c7f8ced7469d5.css
