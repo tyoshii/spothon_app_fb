@@ -1,62 +1,12 @@
-require 'openssl'
-
-class VotesController < ApplicationController
-
+class WallsController < ApplicationController
+  layout "walls"
   before_filter :parse_facebook_cookies  
 
   def parse_facebook_cookies
     @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
   end
 
-  def encrypt( val ) # TODO: to helper
-    enc = OpenSSL::Cipher::Cipher.new('aes256')
-    enc.encrypt
-    enc.pkcs5_keyivgen( 'spothon' )
-    (enc.update(val) + enc.final).unpack("H*")[0]
-    rescue
-      false
-  end
-
-  def decrypt( val ) # TODO: to helper
-    v = Array.new
-    v << val
-    dec = OpenSSL::Cipher::Cipher.new('aes256') 
-    dec.decrypt 
-    dec.pkcs5_keyivgen( 'spothon' )
-    dec.update( v.pack("H*")) + dec.final
-    rescue  
-      false 
-  end 
-
-  # POST /votes
-  def create
-
-    p = nil 
-    case params[:category]
-    when "golf"
-      p = Golf.find_by_fbid( params[:id] )
-    when "baseball"
-      p = Baseball.find_by_fbid( params[:id] )
-    end
-
-    if p
-      p.update_attribute( :point, p.point + 1 )
-      render :index
-    else
-      case params[:category]
-      when "golf"
-        Golf.new( :fbid => params[:id], :point => 1 ).save
-      when "baseball"
-        Baseball.new( :fbid => params[:id], :point => 1 ).save
-      end
-      render :index
-    end
-
-    rescue
-      render :index
-  end
-
-  # GET /votes
+  # GET /walls
   def index
 
       access_token = @facebook_cookies['access_token']
