@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
   end
 
-  def encrypt( val )
+  def encrypt( val ) # TODO: to helper
     enc = OpenSSL::Cipher::Cipher.new('aes256')
     enc.encrypt
     enc.pkcs5_keyivgen( 'spothon' )
@@ -17,7 +17,7 @@ class VotesController < ApplicationController
       false
   end
 
-  def decrypt( val )
+  def decrypt( val ) # TODO: to helper
     v = Array.new
     v << val
     dec = OpenSSL::Cipher::Cipher.new('aes256') 
@@ -30,18 +30,30 @@ class VotesController < ApplicationController
 
   # POST /votes
   def create
-  
-    v = Vote.find( params[:id] ) 
-    rescue
-    if v
-      require "pp"
-      pp v
+
+    p = nil 
+    case params[:category]
+    when "golf"
+      p = Golf.find_by_fbid( params[:id] )
+    when "baseball"
+      p = Baseball.find_by_fbid( params[:id] )
+    end
+
+    if p
+      p.update_attribute( :point, p.point + 1 )
+      render :index
     else
-      v = Vote.new(:id => params[:id], params[:category] => 1 )
-      v.save
-    end 
-    
-    render :index
+      case params[:category]
+      when "golf"
+        Golf.new( :fbid => params[:id], :point => 1 ).save
+      when "baseball"
+        Baseball.new( :fbid => params[:id], :point => 1 ).save
+      end
+      render :index
+    end
+
+    rescue
+      render :index
   end
 
   # GET /votes
@@ -59,6 +71,8 @@ class VotesController < ApplicationController
 
       friends_num = friends.size()
       loop_count  = 5
+
+#graph.put_wall_post("test");
       
       @target = Array.new
  
@@ -87,6 +101,27 @@ class VotesController < ApplicationController
       
       # question
       @question = Array.new
+      questions = YAML.load_file(Rails.root.join("config/question.yml"))
+require "pp"
+pp questions
+      loop_count = 5
+      s_num = questions["sports"].size() 
+      q_num = questions["question"].size()
+      while loop_count > 0
+        s = questions["sports"][ rand(s_num) ]
+        q = questions["question"][ rand(q_num) ]
+        pp q
+        pp s
+
+        @question << {
+          "id" => loop_count,
+          "category" => s["category"],
+          "question" => s["name"] + q, 
+        }
+        loop_count -= 1
+      end  
+
+pp @question
 =begin
       @question << { 'id' => 1, 'q' => "野球が好きなのはどっち？"       }
       @question << { 'id' => 2, 'q' => "サッカーが好きなのはどっち？"   }

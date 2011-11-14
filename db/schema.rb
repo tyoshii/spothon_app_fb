@@ -13,9 +13,26 @@
 
 ActiveRecord::Schema.define(:version => 20110927142610) do
 
-  create_table "votes", :force => true do |t|
+  create_table "votes", do |t|
+    t.string "fbid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+  add_index( "votes", "fbid", :unique => true )
 
+  create_table "golves", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "golves", "fbid", :unique => true )
+
+  create_table "baseballs", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "baseballs", "fbid", :unique => true )
 end

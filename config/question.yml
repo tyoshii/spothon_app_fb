@@ -1,0 +1,6 @@
+sports:
+  - { "category": "baseball", "name": "野球" }
+  - { "category": "golf",     "name": "ゴルフ" }
+question:
+  - "が好きなのはどっち？"
+  - "が得意なのはどっち？"

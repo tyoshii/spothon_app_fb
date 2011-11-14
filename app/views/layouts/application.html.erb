@@ -33,15 +33,14 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
   <% if @facebook_cookies.nil? %>
   function login(){
     FB.login(function(response) {
-console.log(response);
       if (response.session) {
         location.href="http://localhost:3000/votes";
       } else {
         
       }
-    }, {perms:'read_friendlists'});
+    }, {perms:'read_friendlist'});
   }
-login();
+  login();
   <% else %>
   function feed(){
    FB.ui(
