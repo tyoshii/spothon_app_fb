@@ -8,7 +8,7 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <%= csrf_meta_tag %>
 
 <% host = `hostname`.chop %>
-<% url  = host == 'stark-fog-3967' ? 'http://stark-fog-3967.com' : 'http://localhost:3000' %>
+<% url  = ENV['APP_HOST'] ? ENV['APP_HOST'] : 'http://localhost:3000' %>
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="spothon vote" />
@@ -33,7 +33,7 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
     cookie : true,
     xfbml  : true
   });
-console.log('<%= url %>');  
+
   <% if @facebook_cookies.nil? %>
   function login(){
     FB.login(function(response) {
