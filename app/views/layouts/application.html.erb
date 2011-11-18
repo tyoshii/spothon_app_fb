@@ -6,15 +6,19 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <%= stylesheet_link_tag 'application' %>
 <%= javascript_include_tag 'application' %>
 <%= csrf_meta_tag %>
+
+<% host = `hostname`.chop %>
+<% url  = host == 'stark-fog-3967' ? 'http://stark-fog-3967.com' : 'http://localhost:3000' %>
+
 <meta property="og:type" content="website" />
 <meta property="og:title" content="spothon vote" />
-<meta property="og:url" content="http://localhost:3000/votes" />
-<meta property="og:image" content="http://localhost:3000/images/hoge" />
+<meta property="og:url" content="<%= url %>/votes" />
+<meta property="og:image" content="<%= url %>/assets/favicon.png" />
 <meta property="fb:app_id" content="<%= Facebook::APP_ID %>" />
 <meta property="og:description" content="spothon vote" />
 <meta name="author" content="http://spothon.com" />
-<link rel="canonical" href="http://localhost:3000/votes" />
-<link rel="shortcut icon" href="http://localhost:3000/images/favicon.png" />
+<link rel="canonical" href="<%= url %>/votes" />
+<link rel="shortcut icon" href="<%= url %>/assets/favicon.png" />
 </head>
 <body>
 
@@ -29,12 +33,12 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
     cookie : true,
     xfbml  : true
   });
-  
+console.log('<%= url %>');  
   <% if @facebook_cookies.nil? %>
   function login(){
     FB.login(function(response) {
       if (response.session) {
-        location.href="http://localhost:3000/votes";
+        location.href="<%= url %>/votes";
       } else {
         
       }
@@ -48,7 +52,7 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
          method: 'feed',
          name: 'spothon vote',
          link: 'http://apps.facebook.com/spothon_vote/',
-         picture: 'http://localhost:3000/images/hoge',
+         picture: '<%= url %>/assets/favicon.png',
          message: 'hogehoge',
          description: 'あなたの友達でスポーツ王は誰だ！',
          actions: {'name':'powered by spothon Inc', 'link':'http://spothon.com'}

@@ -59,12 +59,6 @@ class VotesController < ApplicationController
   # GET /votes
   def index
 
-      access_token = @facebook_cookies['access_token']
-      graph = Koala::Facebook::API.new(access_token)
-#graph.put_wall_post(Time.now());
-      render :index
-  end
-  def hoge
     if @facebook_cookies.nil?
       render :index
     else
