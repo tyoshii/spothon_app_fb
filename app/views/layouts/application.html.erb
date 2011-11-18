@@ -7,8 +7,7 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <%= javascript_include_tag 'application' %>
 <%= csrf_meta_tag %>
 
-<% host = `hostname`.chop %>
-<% url  = ENV['APP_HOST'] ? ENV['APP_HOST'] : 'http://localhost:3000' %>
+<% url = ENV['APP_HOST'] ? ENV['APP_HOST'] : 'http://localhost:3000' %>
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="spothon vote" />
@@ -27,6 +26,8 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/ja_JP/all.js"></script>
 <script>
+console.log('<%= ENV["APP_HOST"] %>');
+console.log('<%= url %>');
   FB.init({
     appId  : '<%= Facebook::APP_ID %>',
     status : true,
