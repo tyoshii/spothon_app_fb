@@ -1,9 +1,6 @@
 development:
-  app_id: "287808151247290"
-  secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
-test:
-  app_id: "287808151247290"
-  secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
+  app_id: "188316577920445"
+  secret_key: "8763c59432dd7be62837eb0cd6eea398"
 production:
   app_id: "287808151247290"
   secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
