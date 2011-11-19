@@ -1,29 +1,34 @@
+function get_category () {
+  var q_num = $("#left-question-num").text();
+  return $("#q-" + q_num).find("span").attr("class");
+}
+
+function decrement_q () {
+  var q = $("#left-question-num");
+  var now = q.text();
+
+  q.text( now - 1 );
+}
+
+function next() {
+  var q = $("#left-question-num");
+  var id = q.text();
+
+  $(".q-word").css("display", "none");
+  $(".user").css("display", "none");
+
+  $("#q-"    + id).css("display", "block");
+  $("#user-" + id).css("display", "block");
+  $(".hidden").attr("style", "display:none");
+}
+  
+function skip_question() {
+  decrement_q();
+  next();
+}
+
+// onload
 $(function() {
-
-  function get_category () {
-    var q_num = $("#left-question-num").text();
-    return $("#q-" + q_num).find("span").attr("class");
-  }
-
-  function decrement_q () {
-    var q = $("#left-question-num");
-    var now = q.text();
-
-    q.text( now - 1 );
-  }
-  
-  function next() {
-    var q = $("#left-question-num");
-    var id = q.text();
-
-    $(".q-word").css("display", "none");
-    $(".user").css("display", "none");
-  
-    $("#q-"    + id).css("display", "block");
-    $("#user-" + id).css("display", "block");
-    $(".hidden").attr("style", "display:none");
-  }
-
 
   // mouse hover
   var to_light = function() { $(this).css("background-color", "lightcyan") };
@@ -75,7 +80,8 @@ $(function() {
   }
   $(".right").click( click_func );
   $(".left").click( click_func );
-  
+ 
   // init
   next();
 });
+ 
