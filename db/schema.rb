@@ -20,14 +20,22 @@ ActiveRecord::Schema.define(:version => 20110927142610) do
   end
   add_index( "votes", "fbid", :unique => true )
 
-  create_table "golves", do |t|
+  create_table "soccers", do |t|
     t.string "fbid"
     t.integer "point", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  add_index( "golves", "fbid", :unique => true )
-
+  add_index( "soccers", "fbid", :unique => true )
+  
+  create_table "icehockeys", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "icehockeys", "fbid", :unique => true )
+  
   create_table "baseballs", do |t|
     t.string "fbid"
     t.integer "point", :default => 0
@@ -35,4 +43,20 @@ ActiveRecord::Schema.define(:version => 20110927142610) do
     t.datetime "updated_at"
   end
   add_index( "baseballs", "fbid", :unique => true )
+  
+  create_table "basketballs", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "basketballs", "fbid", :unique => true )
+
+  create_table "americanfootballs", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "americanfootballs", "fbid", :unique => true )
 end

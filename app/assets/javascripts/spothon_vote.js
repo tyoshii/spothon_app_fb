@@ -45,7 +45,7 @@ $(function() {
     // ajax post id, category, sig
     $.ajax({
       type: "POST",
-      url: location.href,
+      url: location.href + '/vote',
       data: post_data, 
       async: true,
       complete: function(r, s) {

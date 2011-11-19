@@ -1,7 +1,13 @@
 SpothonAppFb::Application.routes.draw do
 
-  match '/votes', :via => :get,  :to => 'votes#index'
-  match '/votes', :via => :post, :to => 'votes#index'
+  match '/spothon_vote', :via => :get,  :to => 'votes#index'
+  match '/spothon_vote', :via => :post, :to => 'votes#index'
+
+  match '/spothon_vote/vote', :via => :post, :to => 'votes#vote'
+
+  match '/spothon_vote/rannking', :via => :get, :to => 'votes#ranking'
+
+  match '/spothon_vote/wall', :via => :post, :to => 'votes#wall'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

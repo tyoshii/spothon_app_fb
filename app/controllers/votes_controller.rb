@@ -1,6 +1,7 @@
 require 'openssl'
 
 class VotesController < ApplicationController
+  layout 'application', :except => [ 200, 500 ]
 
   before_filter :parse_facebook_cookies  
 
@@ -28,35 +29,57 @@ class VotesController < ApplicationController
       false 
   end 
 
-  # POST /votes
-  def create
+  # GET /spothon_vote/ranking
+  def ranking
 
+  end
+
+  # POST /spothon_vote/wall
+  def wall
+    render '200'
+  end
+
+  # POST /spothon_vote/vote
+  def vote
     p = nil 
     case params[:category]
-    when "golf"
-      p = Golf.find_by_fbid( params[:id] )
+    when "soccer"
+      p = Soccer.find_by_fbid( params[:id] )
+    when "icehockey"
+      p = Icehockey.find_by_fbid( params[:id] )
     when "baseball"
       p = Baseball.find_by_fbid( params[:id] )
+    when "basketball"
+      p = Basketball.find_by_fbid( params[:id] )
+    when "americanfootball"
+      p = Americanfootball.find_by_fbid( params[:id] )
     end
 
     if p
       p.update_attribute( :point, p.point + 1 )
-      render :index
+      render '200'
     else
       case params[:category]
-      when "golf"
-        Golf.new( :fbid => params[:id], :point => 1 ).save
+      when "soccer"
+        Soccer.new( :fbid => params[:id], :point => 1 ).save
+      when "icehockey"
+        Icehockey.new( :fbid => params[:id], :point => 1 ).save
       when "baseball"
         Baseball.new( :fbid => params[:id], :point => 1 ).save
+      when "basketball"
+        Basketball.new( :fbid => params[:id], :point => 1 ).save
+      when "americanfootball"
+        Americanfootball.new( :fbid => params[:id], :point => 1 ).save
       end
-      render :index
+      render '200'
     end
 
     rescue
-      render :index
+      render '500'
   end
 
-  # GET /votes
+  # GET  /spothon_vote
+  # POST /spothon_vote
   def index
 
     if @facebook_cookies.nil?
