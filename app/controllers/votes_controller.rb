@@ -1,7 +1,7 @@
 require 'openssl'
 
 class VotesController < ApplicationController
-  layout 'application', :except => [ 200, 500 ]
+  layout 'application', :except => [ '200', '500' ]
 
   before_filter :parse_facebook_cookies  
 
