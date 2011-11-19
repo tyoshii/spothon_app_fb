@@ -11,12 +11,12 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="spothon vote" />
-<meta property="og:url" content="<%= url %>/votes" />
+<meta property="og:url" content="<%= url %>/spothon_vote" />
 <meta property="og:image" content="<%= url %>/assets/favicon.png" />
 <meta property="fb:app_id" content="<%= Facebook::APP_ID %>" />
 <meta property="og:description" content="spothon vote" />
 <meta name="author" content="http://spothon.com" />
-<link rel="canonical" href="<%= url %>/votes" />
+<link rel="canonical" href="<%= url %>/spothon_vote" />
 <link rel="shortcut icon" href="<%= url %>/assets/favicon.png" />
 </head>
 <body>
@@ -26,8 +26,6 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/ja_JP/all.js"></script>
 <script>
-console.log('<%= ENV["APP_HOST"] %>');
-console.log('<%= url %>');
   FB.init({
     appId  : '<%= Facebook::APP_ID %>',
     status : true,
@@ -39,7 +37,7 @@ console.log('<%= url %>');
   function login(){
     FB.login(function(response) {
       if (response.session) {
-        location.href="<%= url %>/votes";
+        location.href="<%= url %>/spothon_vote";
       } else {
         
       }
