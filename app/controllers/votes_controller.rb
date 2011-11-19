@@ -138,6 +138,10 @@ class VotesController < ApplicationController
         f1 = friends[ rand(friends_num) ]
         f2 = friends[ rand(friends_num) ]
 
+        if f1['id'] == f2['id']
+          next
+        end
+
         @target << {
           'id' => loop_count,
           'right' => {
