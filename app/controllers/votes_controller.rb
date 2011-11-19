@@ -1,7 +1,7 @@
 require 'openssl'
 
 class VotesController < ApplicationController
-  layout 'application', :except => [ :post_wall_form, :post_wall, :vote ] 
+  layout 'application', :except => [ :ranking, :post_wall_form, :post_wall, :vote ] 
 
   before_filter :parse_facebook_cookies  
 
@@ -31,7 +31,24 @@ class VotesController < ApplicationController
 
   # GET /spothon_vote/ranking
   def ranking
+    @ranking = nil 
+    case params[:category]
+    when "soccer"
+      @ranking = Soccer.find_by_fbid( params[:id] )
+    when "icehockey"
+      @ranking = Icehockey.find_by_fbid( params[:id] )
+    when "baseball"
+      @ranking = Baseball.find_by_fbid( params[:id] )
+    when "basketball"
+      @ranking = Basketball.find_by_fbid( params[:id] )
+    when "americanfootball"
+      @ranking = Americanfootball.find_by_fbid( params[:id] )
+    end
 
+    require 'pp'
+    pp @ranking
+
+    render :ranking
   end
 
   # POST /spothon_vote/wall
