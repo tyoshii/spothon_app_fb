@@ -125,6 +125,11 @@ class VotesController < ApplicationController
 
       friends = graph.get_object('me/friends')
       friends_num = friends.size()
+
+      if friends_num == 0
+        return render :no_friends
+      end
+
       loop_count  = 5
 
       @target = Array.new
