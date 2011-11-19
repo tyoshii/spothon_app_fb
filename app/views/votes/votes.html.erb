@@ -5,13 +5,11 @@
 <div id="left-question">
     <span id="left-question-num">5</span>問
 </div>
-    
+
 <div id="question-word">
-<div id="q-1" class="q-word"><span class="baseball">野球が好きなのはどっち？</span></div>
-<div id="q-2" class="q-word">バスケが好きなのはどっち？</div>
-<div id="q-3" class="q-word">サッカーが好きなのはどっち？</div>
-<div id="q-4" class="q-word">ラグビーが好きなのはどっち？</div>
-<div id="q-5" class="q-word"><span class="golf">ゴルフが好きなのはどっち？</span></div>
+<% @question.each{|q| %>
+    <div id="q-<%= q['id'] %>" class="q-word"><span class="<%= q['category'] %>"><%= q['question'] %></span></div>
+<% } %>
 </div>
 
 </div>

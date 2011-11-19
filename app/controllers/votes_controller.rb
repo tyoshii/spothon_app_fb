@@ -98,32 +98,31 @@ class VotesController < ApplicationController
       # question
       @question = Array.new
       questions = YAML.load_file(Rails.root.join("config/question.yml"))
-require "pp"
-pp questions
+
       loop_count = 5
       s_num = questions["sports"].size() 
       q_num = questions["question"].size()
       while loop_count > 0
         s = questions["sports"][ rand(s_num) ]
         q = questions["question"][ rand(q_num) ]
-        pp q
-        pp s
 
         @question << {
-          "id" => loop_count,
-          "category" => s["category"],
-          "question" => s["name"] + q, 
+          'id' => loop_count,
+          'category' => s['category'],
+          'question' => s['name'] + q, 
         }
         loop_count -= 1
       end  
 
-pp @question
 =begin
-      @question << { 'id' => 1, 'q' => "野球が好きなのはどっち？"       }
-      @question << { 'id' => 2, 'q' => "サッカーが好きなのはどっち？"   }
-      @question << { 'id' => 3, 'q' => "ラグビーが好きなのはどっち？"   }
-      @question << { 'id' => 4, 'q' => "ゴルフが好きなのはどっち？"     }
-      @question << { 'id' => 5, 'q' => "フットサルが好きなのはどっち？" }
+require "pp"
+pp @question
+
+[{"id"=>5, "category"=>"soccer", "question"=>"サッカーをして珍プレーしそうなのは？"},
+ {"id"=>4, "category"=>"basketball", "question"=>"バスケを一緒に見に行きたいのは？"},
+ {"id"=>3, "category"=>"icehockey", "question"=>"アイスホッケーを愛しているのは？"},
+ {"id"=>2, "category"=>"baseball", "question"=>"野球について語り合いたいのは？"},
+ {"id"=>1, "category"=>"soccer", "question"=>"サッカーを一緒に見に行きたいのは？"}]
 =end
       render :votes
     end
