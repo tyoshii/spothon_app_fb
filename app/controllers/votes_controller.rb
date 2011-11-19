@@ -1,7 +1,7 @@
 require 'openssl'
 
 class VotesController < ApplicationController
-  layout 'application', :except => [ '200', '500' ]
+  layout 'application', :except => [ :post_wall_form, :post_wall, :vote ] 
 
   before_filter :parse_facebook_cookies  
 
@@ -35,8 +35,25 @@ class VotesController < ApplicationController
   end
 
   # POST /spothon_vote/wall
-  def wall
-    render '200'
+  def post_wall
+
+    if @facebook_cookies.nil?
+      render :post_wall_ng
+    else
+
+      access_token = @facebook_cookies['access_token']
+      graph = Koala::Facebook::API.new(access_token)
+  
+      graph.put_wall_post( params[:text] )
+  
+      render :post_wall_ok
+    end
+  end
+
+  # GET /spothon_vote/wall
+  def post_wall_form
+    @message = params[:message]
+    render :post_wall_form
   end
 
   # POST /spothon_vote/vote

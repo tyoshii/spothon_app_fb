@@ -40,8 +40,6 @@ $(function() {
       "category": get_category()
     };
   
-    console.log(post_data);
-
     // ajax post id, category, sig
     $.ajax({
       type: "POST",
@@ -53,6 +51,24 @@ $(function() {
         console.log(s);
       }
     }); 
+
+    // wall post
+    var message = '';
+    $('.q-word').each( function() {
+      if ( $(this).css('display') == 'block' ) {
+        message += '「' + $(this).find('span').text() + '」';
+        message += 'という質問で'
+      }
+    });
+    message+= $(this).find('.user-name').text();
+    message+= ' に投票しました。';
+
+    TINY.box.show({
+      iframe: location.href + '/wall?message=' + message,
+      width: 500,
+      height: 100,
+      opacity: 20,
+    });
 
     decrement_q();
     next();
