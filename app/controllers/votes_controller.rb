@@ -31,24 +31,42 @@ class VotesController < ApplicationController
 
   # GET /spothon_vote/ranking
   def ranking
-    @ranking = nil 
-    case params[:category]
-    when "soccer"
-      @ranking = Soccer.find_by_fbid( params[:id] )
-    when "icehockey"
-      @ranking = Icehockey.find_by_fbid( params[:id] )
-    when "baseball"
-      @ranking = Baseball.find_by_fbid( params[:id] )
-    when "basketball"
-      @ranking = Basketball.find_by_fbid( params[:id] )
-    when "americanfootball"
-      @ranking = Americanfootball.find_by_fbid( params[:id] )
+    if @facebook_cookies.nil?
+      render '500'
+    else
+
+      access_token = @facebook_cookies['access_token']
+      graph = Koala::Facebook::API.new(access_token)
+
+      ranking = Hash.new
+      ids     = Array.new
+      graph.get_object('me/friends').each{|f|
+        ranking.store( f['id'], { 'name' => f['name'], 'point' => 0 } )
+        ids.push( f['id'] )
+      }
+  
+      score = nil
+      case params[:category]
+      when "soccer"
+        score = Soccer.where( :fbid => ids )
+      when "icehockey"
+        score = Icehockey.where( :fbid => ids )
+      when "baseball"
+        score = Baseball.where( :fbid => ids )
+      when "basketball"
+        score = Basketball.where( :fbid => ids )
+      when "americanfootball"
+        score = Americanfootball.where( :fbid => ids )
+      end
+
+      score.each{|s|
+        ranking[ s.fbid ]['point'] = s.point
+      }
+
+      @result = ranking.sort_by{|key, value| -value['point']}
+ 
+      render :ranking
     end
-
-    require 'pp'
-    pp @ranking
-
-    render :ranking
   end
 
   # POST /spothon_vote/wall
