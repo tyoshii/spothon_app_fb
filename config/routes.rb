@@ -5,7 +5,7 @@ SpothonAppFb::Application.routes.draw do
 
   match '/spothon_vote/vote', :via => :post, :to => 'votes#vote'
 
-  match '/spothon_vote/rannking', :via => :get, :to => 'votes#ranking'
+  match '/spothon_vote/ranking', :via => :get, :to => 'votes#ranking'
 
   match '/spothon_vote/wall', :via => :post, :to => 'votes#post_wall'
   match '/spothon_vote/wall', :via => :get,  :to => 'votes#post_wall_form'
