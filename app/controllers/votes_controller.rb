@@ -57,6 +57,8 @@ class VotesController < ApplicationController
         score = Basketball.where( :fbid => ids )
       when "americanfootball"
         score = Americanfootball.where( :fbid => ids )
+      else
+        return render '404'
       end
 
       score.each{|s|
