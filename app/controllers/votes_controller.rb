@@ -210,7 +210,7 @@ pp @question
  {"id"=>2, "category"=>"baseball", "question"=>"野球について語り合いたいのは？"},
  {"id"=>1, "category"=>"soccer", "question"=>"サッカーを一緒に見に行きたいのは？"}]
 =end
-      render :votes
+      render :index
     end
   end
 

@@ -1,4 +1,180 @@
-spothon vote へようこそ！
-最初にspothon voteのアプリ認証を行います。
-
-ポップアップが有効になっている必要があります。
+<!-- /昼間noon、夜night -->
+<body class='noon'>
+  <div id='wrapper'>
+    <!-- 情報送信 (普段はdisplay:none) -->
+    <div id='sending'>
+      <p>以下の情報を友人のウォールに投稿してもよろしいですか？</p>
+      <div class='info'>
+        <img alt='バスケットボール' height='48' src='' width='48' />
+        <em>名前ー</em>
+      </div>
+      <form action="javascript:void(0);">
+        <textarea>「野球が好きなそうな人」として投票されました！</textarea>
+        <input class='cancel' type='submit' onClick="cancel_post_wall()" value='キャンセル' />
+        <input class='send' type='submit'   onClick="exec_post_wall()" value='送信' />
+      </form>
+    </div>
+    <!-- /情報送信 -->
+    <!-- レコメンド (普段はdisplay:none) -->
+    <div id='recommend'>
+      <p class='catch'>スポーツ好きなあなたへ、おすすめのスマートフォンアプリがあります！</p>
+      <p class='caption'>スポソンはスポーツ観戦をパブリックビューイングのようにみんなで共有できるシンプルで楽しいアプリです。いつでもどこでも「スタジアムのような一体感」を。そんなリアルタイムなコミュニケーションをアプリで楽しむ事ができます。</p>
+      <a class='iphone'>Available on the App Store</a>
+      <a class='android-off'>Available for Android</a>
+      <p class='continue'>
+        <a>引き続き投票する</a>
+      </p>
+    </div>
+    <!-- /レコメンド -->
+    <!-- 白背景カバー (普段はdisplay:none) -->
+    <div class='cover'></div>
+    <h1>Spothon Vote</h1>
+    <div id='content'>
+      <!-- 質問スクリーン -->
+      <div id='question'>
+        <div class='left'>
+          <span>残り</span>
+          <em id="left-question-num">5問</em>
+        </div>
+<% @question.each{|q| %>
+        <p id="q-<%= q['id'] %>" class="q-word">
+          <%= image_tag( 'icon/' + q['category'] + '.png', :size => '48x48' ) %>
+          <span><%= q['question'] %></span>
+        </p>
+<% } %>
+      </div>
+      <!-- /質問スクリーン -->
+      <!-- 回答パネル -->
+<% @target.each{|t| %>
+      <div id='option' class="user user-<%= t['id'] %>">
+        <a class="right">
+          <div>
+            <%= image_tag( t['right']['img'], :size => "48x48" ) %>
+          </div>
+          <em><%= t['right']['name'] %></em>
+          <div class="hidden">
+            <div class="sig"><%= t['right']['sig'] %></div>
+            <div class="id"><%= t['right']['id'] %></div>
+          </div>
+        </a>
+        <a class="left">
+          <div>
+            <%= image_tag( t['left']['img'], :size => "48x48" ) %>
+          </div>
+          <em><%= t['left']['name'] %></em>
+          <div class="hidden">
+            <div class="sig"><%= t['right']['sig'] %></div>
+            <div class="id"><%= t['right']['id'] %></div>
+          </div>
+        </a>
+      </div>
+<% } %>
+      <!-- /回答パネル -->
+      <!-- ランキング -->
+      <div id='ranking'>
+        <!-- 種目選択 -->
+        <ul class='category'>
+          <li class='on'>
+            <a href=''>
+              <img alt='野球' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='サッカー' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='フットボール' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='アイスホッケー' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='ラグビー' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='クリケット' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='バスケットボール' height='48' src='' width='48' />
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <img alt='バスケットボール' height='48' src='' width='48' />
+            </a>
+          </li>
+        </ul>
+        <!-- /種目選択 -->
+        <h2>
+          ランキング
+          <span>- 野球が好きそうな人は野球が好きそうな人は野球が好きそうな人は野球が好きそうな人は</span>
+        </h2>
+        <!-- ランキング詳細 -->
+        <ul class='ranking'>
+          <li class='no1'>
+            <div>
+              <em>1位</em>
+              <%= image_tag( 'icon/no1.png' ) %>
+            </div>
+            <span class='people'>
+              <img alt='バスケットボール' height='48' src='' width='48' />
+              <em>
+                <a>名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前</a>
+              </em>
+            </span>
+            <span class='score'>34433票</span>
+          </li>
+          <li class='no2'>
+            <div>
+              <em>2位</em>
+              <%= image_tag( 'icon/no2.png' ) %>
+            </div>
+            <span class='people'>
+              <img alt='バスケットボール' height='48' src='' width='48' />
+              <em>
+                <a>名前</a>
+              </em>
+            </span>
+            <span class='score'>3票</span>
+          </li>
+          <li class='no3'>
+            <div>
+              <em>3位</em>
+              <%= image_tag( 'icon/no3.png' ) %>
+            </div>
+            <span class='people'>
+              <img alt='バスケットボール' height='48' src='' width='48' />
+              <em>
+                <a>名前</a>
+              </em>
+            </span>
+            <span class='score'>3票</span>
+          </li>
+          <li>
+            <em>4位</em>
+            <span class='people'>名前</span>
+            <span class='score'>3票</span>
+          </li>
+          <li class='last-child'>
+            <em>5位</em>
+            <span class='people'>名前</span>
+            <span class='score'>3票</span>
+          </li>
+        </ul>
+        <!-- /ランキング詳細 -->
+      </div>
+    </div>
+    <!-- /ランキング -->
+  </div>
+</body>

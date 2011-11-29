@@ -1,24 +1,25 @@
+function get_left_q () {
+  return $("#left-question-num").text().substr(0,1);
+}
+
 function get_category () {
-  var q_num = $("#left-question-num").text();
+  var q_num = get_left_q();
   return $("#q-" + q_num).find("span").attr("class");
 }
 
 function decrement_q () {
-  var q = $("#left-question-num");
-  var now = q.text();
-
-  q.text( now - 1 );
+  var now = get_left_q();
+  $("#left-question-num").text( now - 1 + '問' );
 }
 
 function next() {
-  var q = $("#left-question-num");
-  var id = q.text();
+  var id = get_left_q();
 
   $(".q-word").css("display", "none");
   $(".user").css("display", "none");
 
   $("#q-"    + id).css("display", "block");
-  $("#user-" + id).css("display", "block");
+  $(".user-" + id).css("display", "block");
   $(".hidden").attr("style", "display:none");
 }
   
@@ -26,6 +27,20 @@ function skip_question() {
   decrement_q();
   next();
 }
+
+function cancel_post_wall () {
+    decrement_q();
+    next();
+    $(".cover").css("display", "none"); 
+    $("#sending").css("display", "none" );
+}
+
+function exec_post_wall () {
+    decrement_q();
+    next();
+    $(".cover").css("display", "none"); 
+    $("#sending").css("display", "none" );
+} 
 
 // onload
 $(function() {
@@ -38,7 +53,7 @@ $(function() {
   $(".left").hover( to_light, to_white );
 
   // click user
-  var click_func = function() {
+  var click_user = function() {
     var post_data = {
       "id": $(this).find(".id").text(), 
       "sig": $(this).find(".sig").text(),
@@ -58,29 +73,21 @@ $(function() {
     }); 
 
     // wall post
+    $(".cover").css('display', 'block'); 
+    $("#sending").css("display", "block" );
+
     var message = '';
     $('.q-word').each( function() {
       if ( $(this).css('display') == 'block' ) {
         message += '「' + $(this).find('span').text() + '」';
-        message += 'という質問で'
+        message += 'という質問であなたに投票しました！';
       }
     });
-    message+= $(this).find('.user-name').text();
-    message+= ' に投票しました。';
-
-    TINY.box.show({
-      iframe: location.href + '/wall?message=' + message,
-      width: 500,
-      height: 100,
-      opacity: 20,
-    });
-
-    decrement_q();
-    next();
+    $("#sending").find('textarea').text( message );
   }
-  $(".right").click( click_func );
-  $(".left").click( click_func );
- 
+  $(".right").click( click_user );
+  $(".left").click( click_user );
+
   // init
   next();
 });
