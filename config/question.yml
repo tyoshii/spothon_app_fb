@@ -1,9 +1,9 @@
 sports:
-  - { "category": "soccer",           "name": "サッカー" }
-  - { "category": "icehockey",        "name": "アイスホッケー" }
-  - { "category": "baseball",         "name": "野球" }
-  - { "category": "basketball",       "name": "バスケ" }
-  - { "category": "americanfootball", "name": "アメフト" }
+  - { "category": "soccer",     "name": "サッカー" }
+  - { "category": "icehockey",  "name": "アイスホッケー" }
+  - { "category": "baseball",   "name": "野球" }
+  - { "category": "basketball", "name": "バスケ" }
+  - { "category": "football",   "name": "アメフト" }
 question:
   - "が好きなのはどっち？"
   - "が得意なのはどっち？"

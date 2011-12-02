@@ -52,11 +52,19 @@ ActiveRecord::Schema.define(:version => 20110927142610) do
   end
   add_index( "basketballs", "fbid", :unique => true )
 
-  create_table "americanfootballs", do |t|
+  create_table "footballs", do |t|
     t.string "fbid"
     t.integer "point", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  add_index( "americanfootballs", "fbid", :unique => true )
+  add_index( "footballs", "fbid", :unique => true )
+
+  create_table "rugbies", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "rugbies", "fbid", :unique => true )
 end

@@ -55,8 +55,8 @@ class VotesController < ApplicationController
         score = Baseball.where( :fbid => ids )
       when "basketball"
         score = Basketball.where( :fbid => ids )
-      when "americanfootball"
-        score = Americanfootball.where( :fbid => ids )
+      when "football"
+        score = Football.where( :fbid => ids )
       else
         return render '404'
       end
@@ -81,16 +81,10 @@ class VotesController < ApplicationController
       access_token = @facebook_cookies['access_token']
       graph = Koala::Facebook::API.new(access_token)
   
-      graph.put_wall_post( params[:text] )
+      graph.put_wall_post( params[:text], {}, params[:id] )
   
       render :post_wall_ok
     end
-  end
-
-  # GET /spothon_vote/wall
-  def post_wall_form
-    @message = params[:message]
-    render :post_wall_form
   end
 
   # POST /spothon_vote/vote
@@ -105,8 +99,8 @@ class VotesController < ApplicationController
       p = Baseball.find_by_fbid( params[:id] )
     when "basketball"
       p = Basketball.find_by_fbid( params[:id] )
-    when "americanfootball"
-      p = Americanfootball.find_by_fbid( params[:id] )
+    when "football"
+      p = Football.find_by_fbid( params[:id] )
     end
 
     if p
@@ -122,8 +116,8 @@ class VotesController < ApplicationController
         Baseball.new( :fbid => params[:id], :point => 1 ).save
       when "basketball"
         Basketball.new( :fbid => params[:id], :point => 1 ).save
-      when "americanfootball"
-        Americanfootball.new( :fbid => params[:id], :point => 1 ).save
+      when "football"
+        Football.new( :fbid => params[:id], :point => 1 ).save
       end
       render '200'
     end
@@ -137,7 +131,7 @@ class VotesController < ApplicationController
   def index
 
     if @facebook_cookies.nil?
-      render :index
+      render '500'
     else
 
       access_token = @facebook_cookies['access_token']
@@ -185,6 +179,7 @@ class VotesController < ApplicationController
       @question = Array.new
       questions = YAML.load_file(Rails.root.join("config/question.yml"))
 
+
       loop_count = 5
       s_num = questions["sports"].size() 
       q_num = questions["question"].size()
@@ -203,7 +198,6 @@ class VotesController < ApplicationController
 =begin
 require "pp"
 pp @question
-
 [{"id"=>5, "category"=>"soccer", "question"=>"サッカーをして珍プレーしそうなのは？"},
  {"id"=>4, "category"=>"basketball", "question"=>"バスケを一緒に見に行きたいのは？"},
  {"id"=>3, "category"=>"icehockey", "question"=>"アイスホッケーを愛しているのは？"},

@@ -1,20 +1,26 @@
 <!-- /昼間noon、夜night -->
 <body class='noon'>
   <div id='wrapper'>
+
     <!-- 情報送信 (普段はdisplay:none) -->
     <div id='sending'>
       <p>以下の情報を友人のウォールに投稿してもよろしいですか？</p>
       <div class='info'>
         <img alt='バスケットボール' height='48' src='' width='48' />
-        <em>名前ー</em>
+        <em><!-- user name here --></em>
       </div>
       <form action="javascript:void(0);">
-        <textarea>「野球が好きなそうな人」として投票されました！</textarea>
+        <textarea><!-- post data here --></textarea>
         <input class='cancel' type='submit' onClick="cancel_post_wall()" value='キャンセル' />
-        <input class='send' type='submit'   onClick="exec_post_wall()" value='送信' />
+        <input class='send'   type='submit' onClick="exec_post_wall()"   value='送信' />
       </form>
+      <div class="hidden">
+        <div class="sig"></div>
+        <div class="id"></div>
+      </div>
     </div>
     <!-- /情報送信 -->
+
     <!-- レコメンド (普段はdisplay:none) -->
     <div id='recommend'>
       <p class='catch'>スポーツ好きなあなたへ、おすすめのスマートフォンアプリがあります！</p>
@@ -26,10 +32,12 @@
       </p>
     </div>
     <!-- /レコメンド -->
+
     <!-- 白背景カバー (普段はdisplay:none) -->
     <div class='cover'></div>
     <h1>Spothon Vote</h1>
     <div id='content'>
+
       <!-- 質問スクリーン -->
       <div id='question'>
         <div class='left'>
@@ -39,11 +47,12 @@
 <% @question.each{|q| %>
         <p id="q-<%= q['id'] %>" class="q-word">
           <%= image_tag( 'icon/' + q['category'] + '.png', :size => '48x48' ) %>
-          <span><%= q['question'] %></span>
+          <span class="<%= q['category'] %>"><%= q['question'] %></span>
         </p>
 <% } %>
       </div>
       <!-- /質問スクリーン -->
+
       <!-- 回答パネル -->
 <% @target.each{|t| %>
       <div id='option' class="user user-<%= t['id'] %>">
@@ -63,8 +72,8 @@
           </div>
           <em><%= t['left']['name'] %></em>
           <div class="hidden">
-            <div class="sig"><%= t['right']['sig'] %></div>
-            <div class="id"><%= t['right']['id'] %></div>
+            <div class="sig"><%= t['left']['sig'] %></div>
+            <div class="id"><%= t['left']['id'] %></div>
           </div>
         </a>
       </div>
@@ -75,43 +84,38 @@
         <!-- 種目選択 -->
         <ul class='category'>
           <li class='on'>
-            <a href=''>
-              <img alt='野球' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="baseball">
+              <img alt='野球' height='48' src='/assets/icon/baseball.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='サッカー' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="soccer">
+              <img alt='サッカー' height='48' src='/assets/icon/soccer.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='フットボール' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="football">
+              <img alt='フットボール' height='48' src='/assets/icon/football.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='アイスホッケー' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="icehockey">
+              <img alt='アイスホッケー' height='48' src='/assets/icon/icehockey.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='ラグビー' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="rugby">
+              <img alt='ラグビー' height='48' src='/assets/icon/rugby.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='クリケット' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="cricket">
+              <img alt='クリケット' height='48' src='/assets/icon/cricket.png' width='48' />
             </a>
           </li>
           <li>
-            <a href=''>
-              <img alt='バスケットボール' height='48' src='' width='48' />
-            </a>
-          </li>
-          <li>
-            <a href=''>
-              <img alt='バスケットボール' height='48' src='' width='48' />
+            <a href='javascript:void(0);' onClick="get_ranking(this);" class="basketball">
+              <img alt='バスケットボール' height='48' src='/assets/icon/basketball.png' width='48' />
             </a>
           </li>
         </ul>
