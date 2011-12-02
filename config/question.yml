@@ -4,9 +4,11 @@ sports:
   - { "category": "baseball",   "name": "野球" }
   - { "category": "basketball", "name": "バスケ" }
   - { "category": "football",   "name": "アメフト" }
+  - { "category": "rugby",      "name": "ラグビー" }
+  - { "category": "cricket",    "name": "クリケット" }
 question:
-  - "が好きなのはどっち？"
-  - "が得意なのはどっち？"
+  - "が好だと思うのはどっち？"
+  - "が得意だと思うのはどっち？"
   - "を一緒に見に行きたいのは？"
   - "を愛しているのは？"
   - "をして珍プレーしそうなのは？"
