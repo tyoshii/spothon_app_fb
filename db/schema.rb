@@ -67,4 +67,12 @@ ActiveRecord::Schema.define(:version => 20110927142610) do
     t.datetime "updated_at"
   end
   add_index( "rugbies", "fbid", :unique => true )
+
+  create_table "crickets", do |t|
+    t.string "fbid"
+    t.integer "point", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  add_index( "crickets", "fbid", :unique => true )
 end

@@ -6,7 +6,7 @@
     <div id='sending'>
       <p>以下の情報を友人のウォールに投稿してもよろしいですか？</p>
       <div class='info'>
-        <img alt='バスケットボール' height='48' src='' width='48' />
+        <img height='48' width='48' />
         <em><!-- user name here --></em>
       </div>
       <form action="javascript:void(0);">
@@ -35,6 +35,7 @@
 
     <!-- 白背景カバー (普段はdisplay:none) -->
     <div class='cover'></div>
+    <div class='loading'><img src='/assets/loading.gif'></div>
     <h1>Spothon Vote</h1>
     <div id='content'>
 
@@ -81,9 +82,10 @@
       <!-- /回答パネル -->
       <!-- ランキング -->
       <div id='ranking'>
+        <h2>ランキング</h2>
         <!-- 種目選択 -->
         <ul class='category'>
-          <li class='on'>
+          <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="baseball">
               <img alt='野球' height='48' src='/assets/icon/baseball.png' width='48' />
             </a>
@@ -120,10 +122,6 @@
           </li>
         </ul>
         <!-- /種目選択 -->
-        <h2>
-          ランキング
-          <span>- 野球が好きそうな人は野球が好きそうな人は野球が好きそうな人は野球が好きそうな人は</span>
-        </h2>
         <!-- ランキング詳細 -->
         <ul class='ranking'>
           <li class='no1'>
@@ -132,12 +130,10 @@
               <%= image_tag( 'icon/no1.png' ) %>
             </div>
             <span class='people'>
-              <img alt='バスケットボール' height='48' src='' width='48' />
-              <em>
-                <a>名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前名前</a>
-              </em>
+              <img height='48' width='48' />
+              <em><!-- user name here --></em>
             </span>
-            <span class='score'>34433票</span>
+            <span class='score'></span>
           </li>
           <li class='no2'>
             <div>
@@ -145,12 +141,10 @@
               <%= image_tag( 'icon/no2.png' ) %>
             </div>
             <span class='people'>
-              <img alt='バスケットボール' height='48' src='' width='48' />
-              <em>
-                <a>名前</a>
-              </em>
+              <img height='48' width='48' />
+              <em><!-- user name here --></em>
             </span>
-            <span class='score'>3票</span>
+            <span class='score'></span>
           </li>
           <li class='no3'>
             <div>
@@ -158,22 +152,20 @@
               <%= image_tag( 'icon/no3.png' ) %>
             </div>
             <span class='people'>
-              <img alt='バスケットボール' height='48' src='' width='48' />
-              <em>
-                <a>名前</a>
-              </em>
+              <img height='48' width='48' />
+              <em><!-- user name here --></em>
             </span>
-            <span class='score'>3票</span>
+            <span class='score'></span>
           </li>
           <li>
             <em>4位</em>
-            <span class='people'>名前</span>
-            <span class='score'>3票</span>
+            <span class='people'><!-- user name here --></span>
+            <span class='score'></span>
           </li>
           <li class='last-child'>
             <em>5位</em>
-            <span class='people'>名前</span>
-            <span class='score'>3票</span>
+            <span class='people'><!-- user name here --></span>
+            <span class='score'></span>
           </li>
         </ul>
         <!-- /ランキング詳細 -->

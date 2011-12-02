@@ -1,4 +1,5 @@
 require 'openssl'
+require 'json'
 
 class VotesController < ApplicationController
   layout 'application', :except => [ :ranking, :post_wall_form, :post_wall, :vote ] 
@@ -57,6 +58,10 @@ class VotesController < ApplicationController
         score = Basketball.where( :fbid => ids )
       when "football"
         score = Football.where( :fbid => ids )
+      when "rugby"
+        score = Rugby.where( :fbid => ids )
+      when "cricket"
+        score = Cricket.where( :fbid => ids )
       else
         return render '404'
       end
@@ -66,8 +71,7 @@ class VotesController < ApplicationController
       }
 
       @result = ranking.sort_by{|key, value| -value['point']}
- 
-      render :ranking
+      render :json => @result
     end
   end
 
@@ -101,6 +105,10 @@ class VotesController < ApplicationController
       p = Basketball.find_by_fbid( params[:id] )
     when "football"
       p = Football.find_by_fbid( params[:id] )
+    when "rugby"
+      p = Rugby.find_by_fbid( params[:id] )
+    when "cricket"
+      p = Cricket.find_by_fbid( params[:id] )
     end
 
     if p
@@ -118,6 +126,10 @@ class VotesController < ApplicationController
         Basketball.new( :fbid => params[:id], :point => 1 ).save
       when "football"
         Football.new( :fbid => params[:id], :point => 1 ).save
+      when "rugby"
+        Rugby.new( :fbid => params[:id], :point => 1 ).save
+      when "cricket"
+        Cricket.new( :fbid => params[:id], :point => 1 ).save
       end
       render '200'
     end

@@ -5,6 +5,7 @@ group :production do
   gem 'pg'
 end
 
+gem "json"
 gem "koala"
 gem 'rails', '3.1.0'
 

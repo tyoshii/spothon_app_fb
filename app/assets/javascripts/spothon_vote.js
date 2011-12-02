@@ -1,21 +1,51 @@
-function get_ranking (obj) {
+function get_ranking (category_obj) {
+  // loading image
+  $(".loading").css("display", "block");
+
   // select icon
   $("ul.category").each( function() {
     $(this).find('li').attr('class', 'off');
   });
-  $(obj).parent('li').attr('class', 'on');
 
   // get data
-  var category = $(obj).attr('class');
+  var category = $(category_obj).attr('class');
   var param = { 'category': category };
   $.ajax({
     type: "GET",
     url: location.href + '/ranking',
     data: param, 
-    async: false,
-    complete: function(r, s) {
-      console.log(r);
-      console.log(s);
+    async: true,
+    success: function(data, t) {
+      var ranking = $("ul.ranking");
+      ranking.attr('display', 'block');
+
+      // render
+      ranking.find('li').each( function() {
+        var obj  = $(this);
+        var user = data.shift();
+
+        var img = obj.find("span.people").find("img");
+        if ( img ) {
+          img.attr('src', 'http://graph.facebook.com/' + user[0] + '/picture');
+        }          
+
+        var name = obj.find("span.people").find("em");
+        if ( name && name.size() ) {
+          name.text( user[1]['name'] );
+        }
+        else {
+          obj.find("span.people").text( user[1]['name'] );
+        }
+
+        obj.find("span.score").text( user[1]['point'] + '票' );
+  
+        $(category_obj).parent('li').attr('class', 'on');
+        $(".loading").css("display", "none");
+      });      
+    },
+    error: function(r, s, e) {
+      alert( 'ランキングデータの取得に失敗しました。' );
+      $(".loading").css("display", "none");
     }
   }); 
 }
@@ -36,10 +66,6 @@ function decrement_q () {
 
 function next() {
   var id = get_left_q();
-
-  if ( id <= 4 ) {
-    return true;
-  }
 
   $(".q-word").css("display", "none");
   $(".user").css("display", "none");
