@@ -8,6 +8,10 @@ class VotesController < ApplicationController
 
   def parse_facebook_cookies
     @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
+    if @facebook_cookies.nil?
+      render '500'
+      false
+    end
   end
 
   def encrypt( val ) # TODO: to helper
@@ -32,10 +36,6 @@ class VotesController < ApplicationController
 
   # GET /spothon_vote/ranking
   def ranking
-    if @facebook_cookies.nil?
-      render '500'
-    else
-
       access_token = @facebook_cookies['access_token']
       graph = Koala::Facebook::API.new(access_token)
 
@@ -72,15 +72,10 @@ class VotesController < ApplicationController
 
       @result = ranking.sort_by{|key, value| -value['point']}
       render :json => @result
-    end
   end
 
   # POST /spothon_vote/wall
   def post_wall
-
-    if @facebook_cookies.nil?
-      render :post_wall_ng
-    else
 
       access_token = @facebook_cookies['access_token']
       graph = Koala::Facebook::API.new(access_token)
@@ -88,7 +83,6 @@ class VotesController < ApplicationController
       graph.put_wall_post( params[:text], {}, params[:id] )
   
       render :post_wall_ok
-    end
   end
 
   # POST /spothon_vote/vote
@@ -141,11 +135,6 @@ class VotesController < ApplicationController
   # GET  /spothon_vote
   # POST /spothon_vote
   def index
-
-    if @facebook_cookies.nil?
-      render '500'
-    else
-
       access_token = @facebook_cookies['access_token']
       graph = Koala::Facebook::API.new(access_token)
 
@@ -217,7 +206,6 @@ pp @question
  {"id"=>1, "category"=>"soccer", "question"=>"サッカーを一緒に見に行きたいのは？"}]
 =end
       render :index
-    end
   end
 
 end
