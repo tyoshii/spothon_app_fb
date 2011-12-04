@@ -128,8 +128,8 @@ $(function() {
   var to_light = function() { $(this).css("background-color", "lightcyan") };
   var to_white = function() { $(this).css("background-color", "white")     };
 
-  $(".right").hover( to_light, to_white );
-  $(".left").hover( to_light, to_white );
+  // $(".right").hover( to_light, to_white );
+  // $(".left").hover( to_light, to_white );
 
   // click user
   var click_user = function() {

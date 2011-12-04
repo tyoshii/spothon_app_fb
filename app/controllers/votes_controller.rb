@@ -7,10 +7,39 @@ class VotesController < ApplicationController
   before_filter :parse_facebook_cookies  
 
   def parse_facebook_cookies
-    @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
-    if @facebook_cookies.nil?
-      render '500'
-      false
+    host = ENV['APP_HOST'] ||= 'localhost:3000' 
+    path = ( /^\// !~ env['REQUEST_PATH'] ) ? '/' + env['REQUEST_PATH']
+                                            :       env['REQUEST_PATH']
+      
+    url  = 'http://' + host + path
+=begin
+    client = FacebookOAuth::Client.new(
+      :application_id     => Facebook::APP_ID,
+      :application_secret => Facebook::SECRET,
+      :callback => url,
+    )
+
+    if ( params[:code] )
+      client.authorize :code => params[:code]
+      p client.me.info.inpspect
+    end
+
+    redirect_to client.authorize_url
+=end
+    @auth = Koala::Facebook::OAuth.new( Facebook::APP_ID, Facebook::SECRET, url )
+    if ( params[:code] )
+      @facebook_cookies = Hash.new
+p "====================="
+p params[:code]
+p @auth.url_for_access_token(params[:code])
+p @auth.get_access_token(params[:code])
+p "====================="
+      @facebook_cookies['access_token'] = @auth.get_access_token( params[:code] )
+    else
+
+    # redirect to oauth url
+    #redirect_to @auth.url_for_oauth_code( :callback => url, :permissions => 'read_friendlists,publish_stream' )
+      redirect_to @auth.url_for_oauth_code( :callback => url )
     end
   end
 
@@ -140,7 +169,8 @@ class VotesController < ApplicationController
 
       friends = graph.get_object('me/friends')
       friends_num = friends.size()
-
+require 'pp'
+pp friends
       if friends_num == 0
         return render :no_friends
       end
