@@ -14,65 +14,15 @@
 ActiveRecord::Schema.define(:version => 20110927142610) do
 
   create_table "votes", do |t|
-    t.string "fbid"
+    t.string  "fbid"
+    t.integer "soccer",     :default => 0
+    t.integer "baseball",   :default => 0
+    t.integer "icehockey",  :default => 0
+    t.integer "basketball", :default => 0
+    t.integer "football",   :default => 0
+    t.integer "rugby",      :default => 0
+    t.integer "cricket",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  add_index( "votes", "fbid", :unique => true )
-
-  create_table "soccers", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "soccers", "fbid", :unique => true )
-  
-  create_table "icehockeys", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "icehockeys", "fbid", :unique => true )
-  
-  create_table "baseballs", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "baseballs", "fbid", :unique => true )
-  
-  create_table "basketballs", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "basketballs", "fbid", :unique => true )
-
-  create_table "footballs", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "footballs", "fbid", :unique => true )
-
-  create_table "rugbies", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "rugbies", "fbid", :unique => true )
-
-  create_table "crickets", do |t|
-    t.string "fbid"
-    t.integer "point", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-  add_index( "crickets", "fbid", :unique => true )
 end

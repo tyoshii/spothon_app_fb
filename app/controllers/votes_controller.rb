@@ -59,25 +59,7 @@ class VotesController < ApplicationController
         ids.push( f['id'] )
       }
   
-      score = nil
-      case params[:category]
-      when "soccer"
-        score = Soccer.where( :fbid => ids )
-      when "icehockey"
-        score = Icehockey.where( :fbid => ids )
-      when "baseball"
-        score = Baseball.where( :fbid => ids )
-      when "basketball"
-        score = Basketball.where( :fbid => ids )
-      when "football"
-        score = Football.where( :fbid => ids )
-      when "rugby"
-        score = Rugby.where( :fbid => ids )
-      when "cricket"
-        score = Cricket.where( :fbid => ids )
-      else
-        return render '404'
-      end
+      score = Vote.select( 'fbid, ' + params[:category] + ' AS point' ).where( :fbid => ids )
 
       score.each{|s|
         ranking[ s.fbid ]['point'] = s.point
@@ -89,59 +71,22 @@ class VotesController < ApplicationController
 
   # POST /spothon_vote/wall
   def post_wall
-
       graph = Koala::Facebook::API.new( @access_token )
-  
       graph.put_wall_post( params[:text], {}, params[:id] )
-  
       render :post_wall_ok
   end
 
   # POST /spothon_vote/vote
   def vote
-    p = nil 
-    case params[:category]
-    when "soccer"
-      p = Soccer.find_by_fbid( params[:id] )
-    when "icehockey"
-      p = Icehockey.find_by_fbid( params[:id] )
-    when "baseball"
-      p = Baseball.find_by_fbid( params[:id] )
-    when "basketball"
-      p = Basketball.find_by_fbid( params[:id] )
-    when "football"
-      p = Football.find_by_fbid( params[:id] )
-    when "rugby"
-      p = Rugby.find_by_fbid( params[:id] )
-    when "cricket"
-      p = Cricket.find_by_fbid( params[:id] )
-    end
+    v = Vote.select( 'id, ' + params[:category] + ' AS point' ).find_by_fbid!( params[:id] ) 
+    Vote.update( v.id, params[:category] =>  v.point + 1 )
+    render '200'
 
-    if p
-      p.update_attribute( :point, p.point + 1 )
-      render '200'
-    else
-      case params[:category]
-      when "soccer"
-        Soccer.new( :fbid => params[:id], :point => 1 ).save
-      when "icehockey"
-        Icehockey.new( :fbid => params[:id], :point => 1 ).save
-      when "baseball"
-        Baseball.new( :fbid => params[:id], :point => 1 ).save
-      when "basketball"
-        Basketball.new( :fbid => params[:id], :point => 1 ).save
-      when "football"
-        Football.new( :fbid => params[:id], :point => 1 ).save
-      when "rugby"
-        Rugby.new( :fbid => params[:id], :point => 1 ).save
-      when "cricket"
-        Cricket.new( :fbid => params[:id], :point => 1 ).save
-      end
-      render '200'
-    end
+    rescue => err
+      pp err
+      Vote.new( :fbid => params[:id], params['category'] => 1 ).save
 
-    rescue
-      render '500'
+    render '200'
   end
 
   # GET  /spothon_vote
