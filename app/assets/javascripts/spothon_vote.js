@@ -12,7 +12,7 @@ function get_ranking (category_obj) {
   var param = { 'category': category };
   $.ajax({
     type: "GET",
-    url: location.href + '/ranking',
+    url: location.pathname + '/ranking',
     data: param, 
     async: true,
     success: function(data, t) {
@@ -107,7 +107,7 @@ function exec_post_wall () {
 
     $.ajax({
       type: "POST",
-      url: location.href + '/wall',
+      url: location.pathname + '/wall',
       data: post_data, 
       async: false,
       complete: function(r, s) {
@@ -144,7 +144,7 @@ $(function() {
     // ajax post id, category, sig
     $.ajax({
       type: "POST",
-      url: location.href + '/vote',
+      url: location.pathname + '/vote',
       data: post_data, 
       async: true,
       complete: function(r, s) {

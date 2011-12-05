@@ -12,34 +12,19 @@ class VotesController < ApplicationController
                                             :       env['REQUEST_PATH']
       
     url  = 'http://' + host + path
-=begin
-    client = FacebookOAuth::Client.new(
-      :application_id     => Facebook::APP_ID,
-      :application_secret => Facebook::SECRET,
-      :callback => url,
-    )
-
-    if ( params[:code] )
-      client.authorize :code => params[:code]
-      p client.me.info.inpspect
-    end
-
-    redirect_to client.authorize_url
-=end
     @auth = Koala::Facebook::OAuth.new( Facebook::APP_ID, Facebook::SECRET, url )
-    if ( params[:code] )
-      @facebook_cookies = Hash.new
-p "====================="
-p params[:code]
-p @auth.url_for_access_token(params[:code])
-p @auth.get_access_token(params[:code])
-p "====================="
-      @facebook_cookies['access_token'] = @auth.get_access_token( params[:code] )
-    else
 
-    # redirect to oauth url
-    #redirect_to @auth.url_for_oauth_code( :callback => url, :permissions => 'read_friendlists,publish_stream' )
-      redirect_to @auth.url_for_oauth_code( :callback => url )
+    @facebook_cookies = @auth.get_user_info_from_cookie(cookies)
+    if @facebook_cookies.nil?
+  
+      if ( params[:code] )
+        @facebook_cookies = Hash.new
+        @access_token = @auth.get_access_token( params[:code] )
+      else
+        redirect_to @auth.url_for_oauth_code( :callback => url )
+      end
+    else
+      @access_token = @facebook_cookies['access_token']
     end
   end
 
@@ -65,8 +50,7 @@ p "====================="
 
   # GET /spothon_vote/ranking
   def ranking
-      access_token = @facebook_cookies['access_token']
-      graph = Koala::Facebook::API.new(access_token)
+      graph = Koala::Facebook::API.new( @access_token )
 
       ranking = Hash.new
       ids     = Array.new
@@ -106,8 +90,7 @@ p "====================="
   # POST /spothon_vote/wall
   def post_wall
 
-      access_token = @facebook_cookies['access_token']
-      graph = Koala::Facebook::API.new(access_token)
+      graph = Koala::Facebook::API.new( @access_token )
   
       graph.put_wall_post( params[:text], {}, params[:id] )
   
@@ -164,13 +147,11 @@ p "====================="
   # GET  /spothon_vote
   # POST /spothon_vote
   def index
-      access_token = @facebook_cookies['access_token']
-      graph = Koala::Facebook::API.new(access_token)
+      graph = Koala::Facebook::API.new( @access_token )
 
       friends = graph.get_object('me/friends')
       friends_num = friends.size()
-require 'pp'
-pp friends
+
       if friends_num == 0
         return render :no_friends
       end
