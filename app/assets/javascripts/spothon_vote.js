@@ -1,3 +1,67 @@
+function init () {
+
+  $(".q-word").css("display", "none");
+  $(".user").css("display", "none");
+  $(".cover").css("display", "none"); 
+  $("#sending").css("display", "none" );
+  $("div#recommend").css("display", "none");
+   
+  if ( get_user() )
+    get_question();
+  else
+    return false
+
+  $("#left-question-num").text( '5問' );
+
+  next();
+}
+
+function get_question () {
+  $.ajax({
+    type: "GET",
+    url: location.pathname + '/question',
+    async: false,
+    success: function( data, t ) {
+      $("p.q-word").each( function() {
+        var d = data.shift();
+        $(this).find('img').attr('src', '/assets/icon/' + d['category'] + '.png')
+        $(this).find('span').attr('class', d['category']);
+        $(this).find('span').text( d['question'] );
+      });
+    },
+    error: function() {
+      alert("問題の取得に失敗強いました。リロードして下さい。");
+    } 
+  });
+}
+
+function _append_user( t, key, d ) {
+  var root = $(t).find('.' + key );
+  root.find('img').attr('src', d[key]['img']);
+  root.find('em').text( d[key]['name'] );
+  root.find('div.hidden').find('div.sig').text( d[key]['sig'] );
+  root.find('div.hidden').find('div.id').text( d[key]['id'] );
+}
+
+function get_user () {
+  $.ajax({
+    type: "GET",
+    url: location.pathname + '/user',
+    async: false,
+    success: function(data, t) {
+      $("div.user").each( function() {
+        var d = data.shift();
+        _append_user( this, 'right', d );
+        _append_user( this, 'left',  d );
+      });
+    },
+    error: function() {
+      alert("facebookからの友達情報の取得に失敗しました。リロードして下さい。");
+      return false;
+    } 
+  });
+}
+
 function get_ranking (category_obj) {
   // loading image
   $(".loading").css("display", "block");
@@ -183,6 +247,6 @@ $(function() {
   $(".left").click( click_user );
 
   // init
-  next();
+  init();
 });
  
