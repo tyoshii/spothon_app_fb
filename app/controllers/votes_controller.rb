@@ -3,7 +3,7 @@ require 'openssl'
 class VotesController < ApplicationController
   layout 'application', :except => [ :ranking, :user, :post_wall, :vote ] 
 
-  before_filter :parse_facebook_cookies  
+  before_filter :parse_facebook_cookies, :except => [ :vote, :question ] 
 
   def parse_facebook_cookies
     host = ENV['APP_HOST'] ||= 'localhost:3000' 
@@ -160,76 +160,16 @@ class VotesController < ApplicationController
   # GET  /spothon_vote
   # POST /spothon_vote
   def index
-      graph = Koala::Facebook::API.new( @access_token )
-
-      friends = graph.get_object('me/friends')
-      friends_num = friends.size()
-
-      if friends_num == 0
-        return render :no_friends
-      end
-
-      loop_count  = 5
-
-      @target = Array.new
- 
-      while loop_count > 0
-        f1 = friends[ rand(friends_num) ]
-        f2 = friends[ rand(friends_num) ]
-
-        if f1['id'] == f2['id']
-          next
-        end
-
-        @target << {
-          'id' => loop_count,
-          'right' => {
-            'id'    => f1['id'],
-            'name'  => f1['name'],
-            'img'   => 'http://graph.facebook.com/' << f1['id'] << '/picture',
-            'sig'   => encrypt( f1['id'].to_s + Time.current.to_i.to_s ) 
-          },
-          'left' => {
-            'id'    => f2['id'],
-            'name'  => f2['name'],
-            'img'   => 'http://graph.facebook.com/' << f2['id'] << '/picture',
-            'sig'   => encrypt( f2['id'].to_s + Time.current.to_i.to_s )
-          }
-        }
-
-        loop_count -= 1
-      end
-      
-      # question
-      @question = Array.new
-      questions = YAML.load_file(Rails.root.join("config/question.yml"))
-
-
-      loop_count = 5
-      s_num = questions["sports"].size() 
-      q_num = questions["question"].size()
-      while loop_count > 0
-        s = questions["sports"][ rand(s_num) ]
-        q = questions["question"][ rand(q_num) ]
-
-        @question << {
-          'id' => loop_count,
-          'category' => s['category'],
-          'question' => s['name'] + q, 
-        }
-        loop_count -= 1
-      end  
-
-=begin
-require "pp"
-pp @question
-[{"id"=>5, "category"=>"soccer", "question"=>"サッカーをして珍プレーしそうなのは？"},
- {"id"=>4, "category"=>"basketball", "question"=>"バスケを一緒に見に行きたいのは？"},
- {"id"=>3, "category"=>"icehockey", "question"=>"アイスホッケーを愛しているのは？"},
- {"id"=>2, "category"=>"baseball", "question"=>"野球について語り合いたいのは？"},
- {"id"=>1, "category"=>"soccer", "question"=>"サッカーを一緒に見に行きたいのは？"}]
-=end
+    case params[:job]
+    when 'user' then
+      user
+    when 'post' then
+      post_wall
+    when 'ranking' then
+      ranking
+    else 
       render :index
+    end
   end
 
 end

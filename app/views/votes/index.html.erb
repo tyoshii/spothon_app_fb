@@ -45,40 +45,40 @@
           <span>残り</span>
           <em id="left-question-num">5問</em>
         </div>
-<% @question.each{|q| %>
-        <p id="q-<%= q['id'] %>" class="q-word">
-          <%= image_tag( 'icon/' + q['category'] + '.png', :size => '48x48' ) %>
-          <span class="<%= q['category'] %>"><%= q['question'] %></span>
+<% for i in 1..5 do %>
+        <p id="q-<%= i %>" class="q-word">
+          <%= image_tag( '/assets/loading.gif', :size => '48x48' ) %>
+          <span class=""><!-- question word --></span>
         </p>
-<% } %>
+<% end %>
       </div>
       <!-- /質問スクリーン -->
 
       <!-- 回答パネル -->
-<% @target.each{|t| %>
-      <div id='option' class="user user-<%= t['id'] %>">
+<% for i in 1..5 do %>
+      <div id='option' class="user user-<%= i %>">
         <a class="right">
           <div>
-            <%= image_tag( t['right']['img'], :size => "48x48" ) %>
+            <%= image_tag( '/assets/loading.gif', :size => "48x48" ) %>
           </div>
-          <em><%= t['right']['name'] %></em>
+          <em><!-- user name --></em>
           <div class="hidden">
-            <div class="sig"><%= t['right']['sig'] %></div>
-            <div class="id"><%= t['right']['id'] %></div>
+            <div class="sig"><!-- sig --></div>
+            <div class="id"><!-- id --></div>
           </div>
         </a>
         <a class="left">
           <div>
-            <%= image_tag( t['left']['img'], :size => "48x48" ) %>
+            <%= image_tag( '/assets/loading.gif', :size => "48x48" ) %>
           </div>
-          <em><%= t['left']['name'] %></em>
+          <em><!-- user name --></em>
           <div class="hidden">
-            <div class="sig"><%= t['left']['sig'] %></div>
-            <div class="id"><%= t['left']['id'] %></div>
+            <div class="sig"><!-- sig --></div>
+            <div class="id"><!-- id --></div>
           </div>
         </a>
       </div>
-<% } %>
+<% end %>
       <!-- /回答パネル -->
       <!-- ランキング -->
       <div id='ranking'>

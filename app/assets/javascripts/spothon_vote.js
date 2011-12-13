@@ -5,7 +5,7 @@ function init () {
   $(".cover").css("display", "none"); 
   $("#sending").css("display", "none" );
   $("div#recommend").css("display", "none");
-   
+    
   if ( get_user() )
     get_question();
   else
@@ -46,7 +46,7 @@ function _append_user( t, key, d ) {
 function get_user () {
   $.ajax({
     type: "GET",
-    url: location.pathname + '/user',
+    url: location.pathname + '?job=user',
     async: false,
     success: function(data, t) {
       $("div.user").each( function() {
@@ -60,6 +60,8 @@ function get_user () {
       return false;
     } 
   });
+
+  return true;
 }
 
 function get_ranking (category_obj) {
@@ -76,7 +78,7 @@ function get_ranking (category_obj) {
   var param = { 'category': category };
   $.ajax({
     type: "GET",
-    url: location.pathname + '/ranking',
+    url: location.pathname + '?job=ranking',
     data: param, 
     async: true,
     success: function(data, t) {
@@ -171,7 +173,7 @@ function exec_post_wall () {
 
     $.ajax({
       type: "POST",
-      url: location.pathname + '/wall',
+      url: location.pathname + '?job=post',
       data: post_data, 
       async: false,
       complete: function(r, s) {
