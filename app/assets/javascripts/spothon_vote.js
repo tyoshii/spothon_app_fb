@@ -14,7 +14,6 @@ var t_message = {
 
 function get_locale () {
   var lang = 'ja';
-return 'en';
   if (navigator.browserLanguage) {
     lang = navigator.browserLanguage;
   } else if (navigator.language) {

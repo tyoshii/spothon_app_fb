@@ -8,7 +8,6 @@ class VotesController < ApplicationController
 
   def set_locale
     I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first 
-    I18n.locale = :en
   end
 
   def parse_facebook_cookies
