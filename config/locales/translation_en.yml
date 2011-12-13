@@ -1,0 +1,10 @@
+en:
+  votes:
+    index:
+      is_post_wall: "Do you want to post this on your friends' walls?"
+      recommend_catch: 'To sports fan like you, We have a perfect iPhone App for you!'
+      recommend_caption: 'Spothon is a simple and fun application that allows users to virtually gather and socialize while enjoying live sports entertainment. Experience the stadium–like atmosphere anytime, anywhere through real–time communication with other sports fans from around the world.'
+      continue: 'Continue voting.'
+      nokori: 'left'
+      ranking: 'Ranking'
+      ranking_grade: 'No.%d'

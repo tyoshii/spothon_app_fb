@@ -2,8 +2,14 @@ require 'openssl'
 
 class VotesController < ApplicationController
   layout 'application', :except => [ :ranking, :user, :post_wall, :vote ] 
-
+  
+  before_filter :set_locale
   before_filter :parse_facebook_cookies, :except => [ :vote, :question ] 
+
+  def set_locale
+    I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first 
+    I18n.locale = :en
+  end
 
   def parse_facebook_cookies
     host = ENV['APP_HOST'] ||= 'localhost:3000' 

@@ -4,7 +4,7 @@
 
     <!-- 情報送信 (普段はdisplay:none) -->
     <div id='sending'>
-      <p>以下の情報を友人のウォールに投稿してもよろしいですか？</p>
+      <p><%=t '.is_post_wall' %></p>
       <div class='info'>
         <img height='48' width='48' />
         <em><!-- user name here --></em>
@@ -23,12 +23,12 @@
 
     <!-- レコメンド (普段はdisplay:none) -->
     <div id='recommend'>
-      <p class='catch'>スポーツ好きなあなたへ、おすすめのスマートフォンアプリがあります！</p>
-      <p class='caption'>スポソンはスポーツ観戦をパブリックビューイングのようにみんなで共有できるシンプルで楽しいアプリです。いつでもどこでも「スタジアムのような一体感」を。そんなリアルタイムなコミュニケーションをアプリで楽しむ事ができます。</p>
+      <p class='catch'><%=t '.recommend_catch' %></p>
+      <p class='caption'><%=t '.recommend_caption' %></p>
       <a class='iphone'>Available on the App Store</a>
       <a class='android-off'>Available for Android</a>
       <p class='continue'>
-        <a href="javascript:void(0);", onClick="init();">引き続き投票する</a>
+        <a href="javascript:void(0);", onClick="init();"><%=t '.continue' %></a>
       </p>
     </div>
     <!-- /レコメンド -->
@@ -42,8 +42,8 @@
       <!-- 質問スクリーン -->
       <div id='question'>
         <div class='left'>
-          <span>残り</span>
-          <em id="left-question-num">5問</em>
+          <span><%=t '.nokori' %></span>
+          <em id="left-question-num">5</em>
         </div>
 <% for i in 1..5 do %>
         <p id="q-<%= i %>" class="q-word">
@@ -82,42 +82,42 @@
       <!-- /回答パネル -->
       <!-- ランキング -->
       <div id='ranking'>
-        <h2>ランキング</h2>
+        <h2><%=t '.ranking' %></h2>
         <!-- 種目選択 -->
         <ul class='category'>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="baseball">
-              <img alt='野球' height='48' src='/assets/icon/baseball.png' width='48' />
+              <img height='48' src='/assets/icon/baseball.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="soccer">
-              <img alt='サッカー' height='48' src='/assets/icon/soccer.png' width='48' />
+              <img height='48' src='/assets/icon/soccer.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="football">
-              <img alt='フットボール' height='48' src='/assets/icon/football.png' width='48' />
+              <img height='48' src='/assets/icon/football.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="icehockey">
-              <img alt='アイスホッケー' height='48' src='/assets/icon/icehockey.png' width='48' />
+              <img height='48' src='/assets/icon/icehockey.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="rugby">
-              <img alt='ラグビー' height='48' src='/assets/icon/rugby.png' width='48' />
+              <img height='48' src='/assets/icon/rugby.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="cricket">
-              <img alt='クリケット' height='48' src='/assets/icon/cricket.png' width='48' />
+              <img height='48' src='/assets/icon/cricket.png' width='48' />
             </a>
           </li>
           <li>
             <a href='javascript:void(0);' onClick="get_ranking(this);" class="basketball">
-              <img alt='バスケットボール' height='48' src='/assets/icon/basketball.png' width='48' />
+              <img height='48' src='/assets/icon/basketball.png' width='48' />
             </a>
           </li>
         </ul>
@@ -126,7 +126,7 @@
         <ul class='ranking'>
           <li class='no1'>
             <div>
-              <em>1位</em>
+              <em><%= sprintf(t('.ranking_grade'), 1) %></em>
               <%= image_tag( 'icon/no1.png' ) %>
             </div>
             <span class='people'>
@@ -137,7 +137,7 @@
           </li>
           <li class='no2'>
             <div>
-              <em>2位</em>
+              <em><%= sprintf(t('.ranking_grade'), 2) %></em>
               <%= image_tag( 'icon/no2.png' ) %>
             </div>
             <span class='people'>
@@ -148,7 +148,7 @@
           </li>
           <li class='no3'>
             <div>
-              <em>3位</em>
+              <em><%= sprintf(t('.ranking_grade'), 3) %></em>
               <%= image_tag( 'icon/no3.png' ) %>
             </div>
             <span class='people'>
@@ -158,12 +158,12 @@
             <span class='score'></span>
           </li>
           <li>
-            <em>4位</em>
+            <em><%= sprintf(t('.ranking_grade'), 4) %></em>
             <span class='people'><!-- user name here --></span>
             <span class='score'></span>
           </li>
           <li class='last-child'>
-            <em>5位</em>
+            <em><%= sprintf(t('.ranking_grade'), 5) %></em>
             <span class='people'><!-- user name here --></span>
             <span class='score'></span>
           </li>

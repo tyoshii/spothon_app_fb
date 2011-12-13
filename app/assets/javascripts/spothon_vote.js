@@ -1,3 +1,33 @@
+var locale = get_locale();
+var t_question = {
+  'ja': '問',
+  'en': '',
+};
+var t_vote = {
+  'ja': '票',
+  'en': 'vote',
+};
+var t_message = {
+  'ja': '「%q」という質問で %u さんに投票しました！',
+  'en': 'I voted to %u about "%q"', 
+};
+
+function get_locale () {
+  var lang = 'ja';
+return 'en';
+  if (navigator.browserLanguage) {
+    lang = navigator.browserLanguage;
+  } else if (navigator.language) {
+    lang = navigator.language;
+  }
+
+  if (lang.length > 2) {
+    lang = lang.substr(0, 2);
+  }   
+
+  return lang;
+}
+
 function init () {
 
   $(".q-word").css("display", "none");
@@ -11,7 +41,7 @@ function init () {
   else
     return false
 
-  $("#left-question-num").text( '5問' );
+  $("#left-question-num").text( '5' + t_question[locale] );
 
   next();
 }
@@ -30,7 +60,7 @@ function get_question () {
       });
     },
     error: function() {
-      alert("問題の取得に失敗強いました。リロードして下さい。");
+      alert("failed get question list. please reload or contact us.");
     } 
   });
 }
@@ -56,7 +86,7 @@ function get_user () {
       });
     },
     error: function() {
-      alert("facebookからの友達情報の取得に失敗しました。リロードして下さい。");
+      alert("failed get friend list. please reload or contact us.")
       return false;
     } 
   });
@@ -103,14 +133,14 @@ function get_ranking (category_obj) {
           obj.find("span.people").text( user[1]['name'] );
         }
 
-        obj.find("span.score").text( user[1]['point'] + '票' );
+        obj.find("span.score").text( user[1]['point'] + 'vote' );
   
         $(category_obj).parent('li').attr('class', 'on');
         $(".loading").css("display", "none");
       });      
     },
     error: function(r, s, e) {
-      alert( 'ランキングデータの取得に失敗しました。' );
+      alert( 'failed get ranking data' );
       $(".loading").css("display", "none");
     }
   }); 
@@ -177,7 +207,7 @@ function exec_post_wall () {
       data: post_data, 
       async: false,
       complete: function(r, s) {
-        alert( 'ウォールに投稿しました。' );
+        alert( 'Complete !!' );
       }
     }); 
 
@@ -239,8 +269,9 @@ $(function() {
     var message = '';
     $('.q-word').each( function() {
       if ( $(this).css('display') == 'block' ) {
-        message += '「' + $(this).find('span').text() + '」';
-        message += 'という質問で' + user + 'さんに投票しました！';
+  //      message += '「' + $(this).find('span').text() + '」';
+  //      message += 'という質問で' + user + 'さんに投票しました！';
+        message = t_message[locale].replace('%q', $(this).find('span').text() ).replace('%u', user);
       }
     });
     sending.find('textarea').text( message );
