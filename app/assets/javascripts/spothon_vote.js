@@ -221,18 +221,17 @@ function exec_post_wall () {
       async: false,
       complete: function(r, s) {
         alert( t_post_ok[get_locale()] );
+    if ( get_left_q() <= 1 ) {
+          $("div#recommend").css("display", "block");
+          return true;
+        }
+    
+        decrement_q();
+        next();
+        $(".cover").css("display", "none"); 
+        $("#sending").css("display", "none" );
       }
     }); 
-    
-    if ( get_left_q() <= 1 ) {
-      $("div#recommend").css("display", "block");
-      return true;
-    }
-
-    decrement_q();
-    next();
-    $(".cover").css("display", "none"); 
-    $("#sending").css("display", "none" );
 } 
 
 // onload
