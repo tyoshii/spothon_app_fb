@@ -113,9 +113,13 @@ function get_ranking (category_obj) {
   // get data
   var category = $(category_obj).attr('class');
   var param = { 'category': category };
+
+  var p = location.search || '?p=s'
+  p += '&job=ranking'
+
   $.ajax({
     type: "GET",
-    url: location.pathname + '?job=ranking',
+    url: location.pathname + p,
     data: param, 
     async: true,
     success: function(data, t) {

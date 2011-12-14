@@ -1,5 +1,7 @@
 SpothonAppFb::Application.routes.draw do
 
+  match '/' => redirect('/spothon_vote')
+
   match '/spothon_vote', :via => :get,  :to => 'votes#index'
   match '/spothon_vote', :via => :post, :to => 'votes#index'
 
