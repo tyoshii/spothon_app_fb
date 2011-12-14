@@ -12,8 +12,8 @@ icon/baseball.png: icon/baseball-aff204d6f2b66a86d87844b65fda8edd.png
 icon/basketball.png: icon/basketball-0b2da17edb26f6c353291869a1249212.png
 icon/cricket.png: icon/cricket-e2df6464f05bd5bb3806eb082b54d932.png
 icon/football.png: icon/football-99dfb2c63ed0c94889ffa3c3b634f0ee.png
-icon/hockey.png: icon/hockey-afbf83ad7ef5e60befb7d0f911c67400.png
 icon/horse.png: icon/horse-032ef6f09dcf060b01bd1a2ddff32595.png
+icon/icehockey.png: icon/icehockey-afbf83ad7ef5e60befb7d0f911c67400.png
 icon/no1.png: icon/no1-64c26df4e9fd0b6f0e834717698623d2.png
 icon/no2.png: icon/no2-79931d7d6f60d0584792c417704a116f.png
 icon/no3.png: icon/no3-03a5280c99fb83e3f1eac3556cf75d8d.png
@@ -28,5 +28,5 @@ tinybox2/close.png: tinybox2/close-0e29636dc3299830e41de08c17b90cf1.png
 tinybox2/preload.gif: tinybox2/preload-73ebd2dd744f6ae07ae60caac2c7e4ac.gif
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
 jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
-application.js: application-54f00f3c4bdd882e6bdd9fcf08602f1d.js
-application.css: application-e4898ca41154346b91356408f1582feb.css
+application.js: application-d94be254f509e516e9961c4666846f6d.js
+application.css: application-d4862262fd84702546e417e4dcff9670.css
