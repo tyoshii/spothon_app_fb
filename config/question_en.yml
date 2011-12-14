@@ -7,9 +7,8 @@ sports:
   - { "category": "rugby",      "name": "Rugby" }
   - { "category": "cricket",    "name": "Cricket" }
 question:
-  - "が好だと思うのはどっち？"
-  - "が得意だと思うのはどっち？"
-  - "を一緒に見に行きたいのは？"
-  - "を愛しているのは？"
-  - "をして珍プレーしそうなのは？"
-  - "について語り合いたいのは？"
+  - "Which person do you think likes %s ?"
+  - "Which person do you think is good at playing %s ?"
+  - "Which person do you think you want to see %s with ?"
+  - "Which person do you think loves %s ?"
+  - "Which person do you think you want to talk %s with ?"

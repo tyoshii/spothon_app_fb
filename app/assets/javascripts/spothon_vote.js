@@ -11,6 +11,11 @@ var t_message = {
   'ja': '「%q」という質問で %u さんに投票しました！',
   'en': 'I voted to %u about "%q"', 
 };
+var t_post_ok = {
+  'ja': 'ウォールの投稿に成功しました！',
+  'en': 'Complete !!',
+};
+
 
 function get_locale () {
   var lang = 'ja';
@@ -159,7 +164,7 @@ function get_category () {
 
 function decrement_q () {
   var now = get_left_q();
-  $("#left-question-num").text( now - 1 + '問' );
+  $("#left-question-num").text( now - 1 + t_question[get_locale()] );
 }
 
 function next() {
@@ -209,7 +214,7 @@ function exec_post_wall () {
       data: post_data, 
       async: false,
       complete: function(r, s) {
-        alert( 'Complete !!' );
+        alert( t_post_ok[get_locale()] );
       }
     }); 
 
