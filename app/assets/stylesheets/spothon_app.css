@@ -181,7 +181,6 @@ a:hover {
 body {
   line-height: 1.5;
   font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-  background: url(/assets/bg_sky.png) repeat-x 0 top;
 }
 
 body.noon div#content {
