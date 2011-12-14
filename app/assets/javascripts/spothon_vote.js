@@ -212,9 +212,12 @@ function exec_post_wall () {
       'text': sending.find('textarea').text(),
     };
 
+    var param = location.search || '?p=s'
+    param += '&job=post'
+
     $.ajax({
       type: "POST",
-      url: location.pathname + '?job=post',
+      url: location.pathname + param,
       data: post_data, 
       async: false,
       complete: function(r, s) {
