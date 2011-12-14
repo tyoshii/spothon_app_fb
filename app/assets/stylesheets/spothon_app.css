@@ -186,8 +186,6 @@ body {
 
 body.noon div#content {
   background: url(/assets/bg_stadium.png) no-repeat 0 0;
-  width: 519px;
-  height: 795px;
 }
 
 body.night div#content {
@@ -244,7 +242,7 @@ div#wrapper div#content div#question p.baseball {
   background: url(/assets/icon_sports_baseball.png) no-repeat 0 28px;
 }
 div#wrapper div#content div#option {
-  padding: 0 8px 25px;
+  padding: 0 10px 30px;
 }
 div#wrapper div#content div#option a {
   -webkit-border-radius: 10px;

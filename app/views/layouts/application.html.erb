@@ -32,32 +32,7 @@ xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
     cookie : true,
     xfbml  : true
   });
-
-  <% if @facebook_cookies.nil? %>
-  function login(){
-    FB.login(function(response) {
-      if (response.session) {
-        location.href="<%= url %>/spothon_vote";
-      } else {
-        
-      }
-    }, {perms:'read_friendlists,publish_stream'});
-  }
-  login();
-  <% else %>
-  function feed(){
-   FB.ui(
-       {
-         method: 'feed',
-         name: 'spothon vote',
-         link: 'http://apps.facebook.com/spothon_vote/',
-         picture: '<%= url %>/assets/favicon.png',
-         message: 'hogehoge',
-         description: 'あなたの友達でスポーツ王は誰だ！',
-         actions: {'name':'powered by spothon Inc', 'link':'http://spothon.com'}
-       });
-  }
-  <% end %>
+  FB.Canvas.setAutoResize();
 </script>
 </body>
 </html>
