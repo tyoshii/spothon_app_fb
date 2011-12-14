@@ -11,11 +11,11 @@ class VotesController < ApplicationController
   end
 
   def parse_facebook_cookies
-    host = ENV['APP_HOST'] ||= 'localhost:3000' 
+    host = ENV['APP_HOST'] ||= 'http://localhost:3000' 
     path = ( /^\// !~ env['REQUEST_PATH'] ) ? '/' + env['REQUEST_PATH']
                                             :       env['REQUEST_PATH']
       
-    url  = 'http://' + host + path
+    url  = host + path
     @auth = Koala::Facebook::OAuth.new( Facebook::APP_ID, Facebook::SECRET, url )
 
     @facebook_cookies = @auth.get_user_info_from_cookie(cookies)
