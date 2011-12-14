@@ -204,11 +204,6 @@ function cancel_post_wall () {
 }
 
 function exec_post_wall () {
-    if ( get_left_q() < 1 ) {
-      $("div#recommend").css("display", "block");
-      return true;
-    }
-
     var sending = $("#sending");
     var post_data = {    
       'id':   sending.find('div.hidden').find('div.id').text(),
@@ -228,6 +223,11 @@ function exec_post_wall () {
         alert( t_post_ok[get_locale()] );
       }
     }); 
+    
+    if ( get_left_q() <= 1 ) {
+      $("div#recommend").css("display", "block");
+      return true;
+    }
 
     decrement_q();
     next();
