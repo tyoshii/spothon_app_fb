@@ -73,9 +73,12 @@ function _append_user( t, key, d ) {
 }
 
 function get_user () {
+  var param = location.search || '?p=s'
+  param += '&job=user'
+
   $.ajax({
     type: "GET",
-    url: location.pathname + '?job=user',
+    url: location.pathname + param,
     async: false,
     success: function(data, t) {
       $("div.user").each( function() {

@@ -1,0 +1,15 @@
+sports:
+  - { "category": "soccer",     "name": "Soccer" }
+  - { "category": "icehockey",  "name": "IceHockey" }
+  - { "category": "baseball",   "name": "Baseball" }
+  - { "category": "basketball", "name": "Basketball " }
+  - { "category": "football",   "name": "Football" }
+  - { "category": "rugby",      "name": "Rugby" }
+  - { "category": "cricket",    "name": "Cricket" }
+question:
+  - "が好だと思うのはどっち？"
+  - "が得意だと思うのはどっち？"
+  - "を一緒に見に行きたいのは？"
+  - "を愛しているのは？"
+  - "をして珍プレーしそうなのは？"
+  - "について語り合いたいのは？"

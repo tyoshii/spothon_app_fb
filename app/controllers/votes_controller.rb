@@ -7,7 +7,8 @@ class VotesController < ApplicationController
   before_filter :parse_facebook_cookies, :except => [ :vote, :question ] 
 
   def set_locale
-    I18n.locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first 
+    @locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first 
+    I18n.locale = @locale
   end
 
   def parse_facebook_cookies
@@ -95,8 +96,9 @@ class VotesController < ApplicationController
   # GET /spothon_vote/question
   def question
     @question = Array.new
-    questions = YAML.load_file(Rails.root.join("config/question.yml"))
 
+    yml = 'config/question_' + @locale + '.yml'
+    questions = YAML.load_file(Rails.root.join( yml ))
 
     loop_count = 5
     s_num = questions["sports"].size() 
@@ -108,7 +110,7 @@ class VotesController < ApplicationController
       @question << {
         'id' => loop_count,
         'category' => s['category'],
-        'question' => s['name'] + q, 
+        'question' => sprintf( q, s['name'] ), 
       }
       loop_count -= 1
     end  
