@@ -60,23 +60,18 @@ class VotesController < ApplicationController
       ranking = Hash.new
       ids     = Array.new
       graph.get_object('me/friends').each{|f|
-        ranking.store( f['id'], { 'name' => f['name'], 'point' => 0 } )
+        ranking[f['id']] = f['name']
         ids.push( f['id'] )
       }
   
-      score = Vote.select( 'fbid, ' + params[:category] + ' AS point' ).where( :fbid => ids )
-
+      score = Vote.select( 'fbid, ' + params[:category] + ' AS point' ).where( :fbid => ids ).order( params[:category] + " desc" ).limit(5)
+  
+      result = Array.new
       score.each{|s|
-        ranking[ s.fbid ]['point'] = s.point
+        result.push( :id => s.fbid, :name => ranking[s.fbid], :point => s.point )
       }
 
-      if ranking.size() != 0 then
-        @result = ranking.sort_by{|key, value| -value['point']}
-      else
-        @result = ranking
-      end
-
-      render :json => @result
+      render :json => result
   end
 
   # POST /spothon_vote/wall

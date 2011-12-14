@@ -131,20 +131,24 @@ function get_ranking (category_obj) {
         var obj  = $(this);
         var user = data.shift();
 
+        if ( user == undefined ) {
+          return;
+        }
+
         var img = obj.find("span.people").find("img");
         if ( img ) {
-          img.attr('src', 'http://graph.facebook.com/' + user[0] + '/picture');
+          img.attr('src', 'http://graph.facebook.com/' + user['id'] + '/picture');
         }          
 
         var name = obj.find("span.people").find("em");
         if ( name && name.size() ) {
-          name.text( user[1]['name'] );
+          name.text( user['name'] );
         }
         else {
-          obj.find("span.people").text( user[1]['name'] );
+          obj.find("span.people").text( user['name'] );
         }
 
-        obj.find("span.score").text( user[1]['point'] + 'vote' );
+        obj.find("span.score").text( user['point'] + 'vote' );
   
         $(category_obj).parent('li').attr('class', 'on');
         $(".loading").css("display", "none");
