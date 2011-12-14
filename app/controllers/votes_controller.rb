@@ -70,7 +70,12 @@ class VotesController < ApplicationController
         ranking[ s.fbid ]['point'] = s.point
       }
 
-      @result = ranking.sort_by{|key, value| -value['point']}
+      if ranking.size() != 0 then
+        @result = ranking.sort_by{|key, value| -value['point']}
+      else
+        @result = ranking
+      end
+
       render :json => @result
   end
 
