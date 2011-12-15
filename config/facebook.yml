@@ -1,6 +1,8 @@
 development:
   app_id: "188316577920445"
   secret_key: "8763c59432dd7be62837eb0cd6eea398"
+  redirect_url: 'http://localhost:3000/spothon_vote'
 production:
   app_id: "287808151247290"
   secret_key: "dda945b789efaa1b7ad9a54c5697dc8e"
+  redirect_url: 'http://sharp-sunset-1629.heroku.com/spothon_vote'

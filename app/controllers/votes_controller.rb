@@ -1,7 +1,7 @@
 require 'openssl'
 
 class VotesController < ApplicationController
-  layout 'application', :except => [ :ranking, :user, :post_wall, :vote ] 
+  layout 'application', :except => [ :redirect, :ranking, :user, :post_wall, :vote ] 
   
   before_filter :set_locale
   before_filter :parse_facebook_cookies, :except => [ :vote, :question ] 
@@ -12,12 +12,11 @@ class VotesController < ApplicationController
   end
 
   def parse_facebook_cookies
-    host = ENV['APP_HOST'] ||= 'http://localhost:3000' 
-    path = ( /^\// !~ env['REQUEST_PATH'] ) ? '/' + env['REQUEST_PATH']
-                                            :       env['REQUEST_PATH']
-      
-    url  = host + path
-    @auth = Koala::Facebook::OAuth.new( Facebook::APP_ID, Facebook::SECRET, url )
+    @auth = Koala::Facebook::OAuth.new(
+      Facebook::APP_ID,
+      Facebook::SECRET,
+      Facebook::REDIRECT_URL,
+    )
 
     @facebook_cookies = @auth.get_user_info_from_cookie(cookies)
     if @facebook_cookies.nil?
@@ -26,7 +25,7 @@ class VotesController < ApplicationController
         @facebook_cookies = Hash.new
         @access_token = @auth.get_access_token( params[:code] )
       else
-        redirect_to @auth.url_for_oauth_code( :callback => url )
+        redirect_to @auth.url_for_oauth_code( :callback => Facebook::REDIRECT_URL )
       end
     else
       @access_token = @facebook_cookies['access_token']
@@ -52,6 +51,10 @@ class VotesController < ApplicationController
     rescue  
       false 
   end 
+
+  def redirect
+    render :redirect
+  end
 
   # GET /spothon_vote/ranking
   def ranking
