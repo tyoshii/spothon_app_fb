@@ -52,10 +52,6 @@ class VotesController < ApplicationController
       false 
   end 
 
-  def redirect
-    render :redirect
-  end
-
   # GET /spothon_vote/ranking
   def ranking
       graph = Koala::Facebook::API.new( @access_token )
