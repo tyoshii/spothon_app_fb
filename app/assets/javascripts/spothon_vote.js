@@ -238,10 +238,10 @@ function exec_post_wall () {
 $(function() {
 
   // if not on iframe, redirect to facebook page
-  if ( window == parent ) {
-    location.href = 'http://www.facebook.com/spothon?sk=app_287808151247290';
-    return;
-  }
+  // if ( window == parent ) {
+    // location.href = 'http://www.facebook.com/spothon?sk=app_287808151247290';
+    // return;
+  // }
 
   // mouse hover
   var to_light = function() { $(this).css("background-color", "lightcyan") };

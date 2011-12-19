@@ -1,0 +1,629 @@
+@charset "UTF-8";/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+*/
+/* line 1, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 8, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 13, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 18, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 20, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 22, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 27, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 30, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 33, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 38, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 45, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 54, /Users/tyoshii/git/tyoshii716/spothon_app_fb/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* 
+html5doctor.com Reset Stylesheet
+v1.4 
+2009-07-27
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section, time {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+article, aside, dialog, figure, footer,
+header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/*
+bder:8aebff
+bg:d4f8ff
+
+cb0000
+*/
+a {
+  color: #007eb0;
+  cursor: pointer;
+}
+
+/*
+class for extends
+*/
+.image, div#sending form input, div#recommend a.iphone, div#recommend a.android-off {
+  display: block;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.clear {
+  overflow: hidden;
+  clear: both;
+}
+
+.clearfix, div#wrapper div#content div#question, div#wrapper div#content div#option, div#wrapper div#content div#option a, div#wrapper div#content div#ranking ul.category, div#wrapper div#content div#ranking ul.ranking, div#wrapper div#content div#ranking ul.ranking li, div#sending div.info {
+  display: inline-block;
+}
+
+.clearfix:after, div#wrapper div#content div#question:after, div#wrapper div#content div#option:after, div#wrapper div#content div#option a:after, div#wrapper div#content div#ranking ul.category:after, div#wrapper div#content div#ranking ul.ranking:after, div#wrapper div#content div#ranking ul.ranking li:after, div#sending div.info:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  font-size: 0;
+}
+
+* html .clearfix, * html div#wrapper div#content div#question, div#wrapper div#content * html div#question, * html div#wrapper div#content div#option, div#wrapper div#content * html div#option, * html div#wrapper div#content div#option a, div#wrapper div#content div#option * html a, * html div#wrapper div#content div#ranking ul.category, div#wrapper div#content div#ranking * html ul.category, * html div#wrapper div#content div#ranking ul.ranking, div#wrapper div#content div#ranking * html ul.ranking, * html div#wrapper div#content div#ranking ul.ranking li, div#wrapper div#content div#ranking ul.ranking * html li, * html div#sending div.info, div#sending * html div.info {
+  height: 1%;
+}
+
+.clearfix, div#wrapper div#content div#question, div#wrapper div#content div#option, div#wrapper div#content div#option a, div#wrapper div#content div#ranking ul.category, div#wrapper div#content div#ranking ul.ranking, div#wrapper div#content div#ranking ul.ranking li, div#sending div.info {
+  display: block;
+}
+
+.btn, div#sending form input, div#recommend a.iphone {
+  cursor: pointer;
+}
+.btn:hover, div#sending form input:hover, div#recommend a.iphone:hover {
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+}
+
+.expbg {
+  position: relative;
+  padding: 0 5475px;
+  margin: 0 0 0 -5950px;
+  left: 50%;
+  width: 950px;
+}
+
+/*
+common.css
+*/
+a {
+  color: #007eb0;
+  text-decoration: none;
+}
+a:hover {
+  color: #60cdf8 !important;
+  text-decoration: underline;
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+body.noon div#content {
+  background: url(/assets/bg_stadium.png) no-repeat 0 0;
+}
+
+body.night div#content {
+  background: url(/assets/bg_stadium_night.png) no-repeat 0 0;
+}
+
+div#wrapper {
+  width: 520px;
+  position: relative;
+}
+div#wrapper h1 {
+  background: url(/assets/logo_spothonvote.png) no-repeat center center;
+  background-color: #cef7ff;
+  text-indent: -9999px;
+  height: 46px;
+}
+div#wrapper div#content {
+  position: relative;
+  padding: 80px 0 0 0;
+}
+div#wrapper div#content div#question p {
+  color: #fff600;
+}
+div#wrapper div#content div#question div.left {
+  float: left;
+  width: 68px;
+  height: 68px;
+  padding: 24px 6px 24px 30px;
+}
+div#wrapper div#content div#question div.left span, div#wrapper div#content div#question div.left em {
+  line-height: 1.3;
+  display: block;
+  color: #7cd207;
+  font-size: 120%;
+  font-weight: bold;
+  font-style: normal;
+}
+div#wrapper div#content div#question div.left em {
+  font-size: 180%;
+}
+div#wrapper div#content div#question p {
+  float: left;
+  color: #fff600;
+  font-size: 130%;
+  line-height: 1.3;
+  width: 410px;
+  padding: 24px 0 24px 0px;
+}
+div#wrapper div#content div#question img {
+  float: left;
+  margin: 0 10px 0 0;
+}
+div#wrapper div#content div#question p.baseball {
+  background: url(/assets/icon_sports_baseball.png) no-repeat 0 28px;
+}
+div#wrapper div#content div#option {
+  padding: 0 10px 30px;
+}
+div#wrapper div#content div#option a {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: block;
+  float: left;
+  padding: 10px;
+  width: 206px;
+  margin: 10px;
+  border: 2px solid #d0d0d0;
+  background: #ffffff;
+  color: #000000 !important;
+  text-decoration: none;
+}
+div#wrapper div#content div#option a div {
+  float: left;
+  width: 48px;
+  margin: 0 8px 0 0;
+  text-align: center;
+  font-size: 80%;
+}
+div#wrapper div#content div#option a div img {
+  margin: 0 0 4px 0;
+}
+div#wrapper div#content div#option a em {
+  font-weight: bold;
+  font-style: normal;
+}
+div#wrapper div#content div#option a:hover {
+  border: 2px solid #73e5ff;
+  background: #c7f5ff;
+}
+div#wrapper div#content div#ranking {
+  margin: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 10px solid #d4f8ff;
+  background: #ffffff;
+}
+div#wrapper div#content div#ranking h2 {
+  margin: 0 10px;
+}
+div#wrapper div#content div#ranking h2 span {
+  font-weight: normal;
+}
+div#wrapper div#content div#ranking ul.category {
+  margin: 10px;
+  padding: 8px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  background: #eeeeee;
+}
+div#wrapper div#content div#ranking ul.category li {
+  float: left;
+  margin: 0 0 8px 8px;
+  list-style-type: none;
+}
+div#wrapper div#content div#ranking ul.category li a {
+  display: block;
+  margin: 2px;
+  width: 48px;
+  height: 48px;
+}
+div#wrapper div#content div#ranking ul.category li a:hover {
+  background: #73e5ff;
+}
+div#wrapper div#content div#ranking ul.category li.on a {
+  margin: 0px;
+  border: 2px solid #73e5ff !important;
+}
+div#wrapper div#content div#ranking ul.ranking {
+  margin: 10px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+}
+div#wrapper div#content div#ranking ul.ranking li {
+  list-style-type: none;
+  border-bottom: 1px solid #bfbfbf;
+  padding: 6px 0;
+}
+div#wrapper div#content div#ranking ul.ranking li em {
+  font-style: normal;
+  font-weight: bold;
+  margin: 0 5px 0 0;
+}
+div#wrapper div#content div#ranking ul.ranking li div {
+  width: 50px;
+  float: left;
+}
+div#wrapper div#content div#ranking ul.ranking li div em {
+  display: block;
+}
+div#wrapper div#content div#ranking ul.ranking li div img {
+  display: block;
+}
+div#wrapper div#content div#ranking ul.ranking li span.people img {
+  margin: 0 10px 0 0;
+  vertical-align: top;
+  float: left;
+}
+div#wrapper div#content div#ranking ul.ranking li span.people em {
+  float: left;
+  width: 240px;
+}
+div#wrapper div#content div#ranking ul.ranking li span.score {
+  float: right;
+  color: #000000;
+  font-weight: bold;
+}
+div#wrapper div#content div#ranking ul.ranking li.no1 {
+  color: #d4c800;
+}
+div#wrapper div#content div#ranking ul.ranking li.no2 {
+  color: #bbbbbb;
+}
+div#wrapper div#content div#ranking ul.ranking li.no3 {
+  color: #884f38;
+}
+div#wrapper div#content div#ranking ul.ranking li:last-child,
+div#wrapper div#content div#ranking ul.ranking li.last-child {
+  border-bottom: none;
+}
+
+div#sending {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  margin: 250px 20px 20px;
+  width: 430px;
+  padding: 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 10px solid #d4f8ff;
+  background: #ffffff;
+}
+div#sending p {
+  font-size: 90%;
+  margin: 0 0 8px 0;
+}
+div#sending div.info {
+  margin: 0 0 15px 0;
+}
+div#sending div.info img {
+  float: left;
+  margin: 0 5px 0 0;
+}
+div#sending div.info em {
+  font-size: 90%;
+  font-weight: bold;
+  font-style: normal;
+}
+div#sending form {
+  clear: both;
+}
+div#sending form textarea {
+  font-size: 90%;
+  width: 420px;
+  min-height: 60px;
+  margin: 0 0 15px 0;
+}
+div#sending form input {
+  border: none;
+  float: left;
+  text-indent: 0;
+  font-weight: bold;
+  margin: 0 15px 0;
+  width: 193px;
+  height: 31px;
+  background: url(/assets/btn_send.png) no-repeat 0 0;
+}
+div#sending form input.send {
+  margin: 0 10px 0 0;
+}
+
+div#recommend {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  margin: 250px 20px 20px;
+  width: 430px;
+  padding: 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 10px solid #d4f8ff;
+  background: #ffffff;
+}
+div#recommend p.catch {
+  color: #cb0000;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+div#recommend p.caption {
+  padding: 0 0 10px 110px;
+  font-size: 90%;
+  margin: 0 0 15px 0;
+  background: url(/assets/icon_spothon_shadow.png) no-repeat 0 0;
+}
+div#recommend a.iphone {
+  float: left;
+  margin: 0 0 30px 0;
+  width: 211px;
+  height: 71px;
+  background: url(/assets/btn_appstore.png) no-repeat 0 0;
+}
+div#recommend a.android-off {
+  float: left;
+  margin: 0 0 30px 0;
+  width: 211px;
+  height: 71px;
+  background: url(/assets/btn_android_off.png) no-repeat 0 0;
+}
+div#recommend p.continue {
+  text-align: right;
+  clear: both;
+}
+div#recommend p.continue a {
+  padding: 0 0 4px 20px;
+  background: url(/assets/arrow_more.png) no-repeat 0 0;
+}
+
+div.loading {
+  display: none;
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: #ffffff;
+}
+
+div.cover {
+  display: none;
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: #ffffff;
+}
+.tbox {position:absolute; display:none; padding:14px 17px; z-index:900}
+.tinner {padding:15px; -moz-border-radius:5px; border-radius:5px; background:#fff url(/assets/tinybox2/preload.gif) no-repeat 50% 50%; border-right:1px solid #333; border-bottom:1px solid #333}
+.tmask {position:absolute; display:none; top:0px; left:0px; height:100%; width:100%; background:#000; z-index:800}
+.tclose {position:absolute; top:0px; right:0px; width:30px; height:30px; cursor:pointer; background:url(/assets/tinybox2/close.png) no-repeat}
+.tclose:hover {background-position:0 -30px}
+
+#error {background:#ff6969; color:#fff; text-shadow:1px 1px #cf5454; border-right:1px solid #000; border-bottom:1px solid #000; padding:0}
+#error .tcontent {padding:10px 14px 11px; border:1px solid #ffb8b8; -moz-border-radius:5px; border-radius:5px}
+#success {background:#2ea125; color:#fff; text-shadow:1px 1px #1b6116; border-right:1px solid #000; border-bottom:1px solid #000; padding:10; -moz-border-radius:0; border-radius:0}
+#bluemask {background:#4195aa}
+#frameless {padding:0}
+#frameless .tclose {left:6px}
+div#wall-post {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  min-width: 450px;
+  max-width: 450px;
+  min-height: 100px;
+  max-height: 100px;
+  border: 5px solid aqua; 
+}
+
+div#post-form {
+  position: relative;
+  top: -55px;
+  right: -80px;
+  
+
+
+}
+
+div#post-text {
+  border: 1px solid black;
+  width: 350px;
+  background-color: lightgray;
+}
+
+span#do-post, span#do-skip {
+  background-color: aqua;
+  border: 1px solid aqua;
+  color: black;
+  width: 200px;
+}
