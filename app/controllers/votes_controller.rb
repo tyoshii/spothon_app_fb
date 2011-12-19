@@ -77,7 +77,8 @@ class VotesController < ApplicationController
   def post_wall
       graph = Koala::Facebook::API.new( @access_token )
       graph.put_wall_post( params[:text], {
-        :link => "spothon.com",
+        #:link => "spothon.com",
+        :link => "http://www.facebook.com/spothon?v=app_287808151247290",
         :picture => "http://spothon.s3.amazonaws.com/web/icon_114.png",
       }, params[:id] )
       render :post_wall_ok
