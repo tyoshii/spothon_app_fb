@@ -18,8 +18,8 @@ class VotesController < ApplicationController
       Facebook::REDIRECT_URL,
     )
 
-    @facebook_cookies = @auth.get_user_info_from_cookie(cookies)
-    if @facebook_cookies.nil?
+    #@facebook_cookies = @auth.get_user_info_from_cookie(cookies)
+    #if @facebook_cookies.nil?
   
       if ( params[:code] )
         @facebook_cookies = Hash.new
@@ -27,9 +27,9 @@ class VotesController < ApplicationController
       else
         redirect_to @auth.url_for_oauth_code( :callback => Facebook::REDIRECT_URL )
       end
-    else
-      @access_token = @facebook_cookies['access_token']
-    end
+    #else
+      #@access_token = @facebook_cookies['access_token']
+    #end
   end
 
   def encrypt( val ) # TODO: to helper
