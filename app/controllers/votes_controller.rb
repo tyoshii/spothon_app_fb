@@ -17,7 +17,6 @@ class VotesController < ApplicationController
       Facebook::SECRET,
       Facebook::REDIRECT_URL,
     )
-    @auth.url_for_oauth_code(:permissions => "publish_stream")
 
     #@facebook_cookies = @auth.get_user_info_from_cookie(cookies)
     #if @facebook_cookies.nil?
@@ -26,7 +25,10 @@ class VotesController < ApplicationController
         @facebook_cookies = Hash.new
         @access_token = @auth.get_access_token( params[:code] )
       else
-        redirect_to @auth.url_for_oauth_code( :callback => Facebook::REDIRECT_URL )
+        redirect_to @auth.url_for_oauth_code({
+          :callback => Facebook::REDIRECT_URL,
+          :permissions => "publish_stream"
+        })
       end
     #else
       #@access_token = @facebook_cookies['access_token']
