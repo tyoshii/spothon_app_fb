@@ -86,7 +86,7 @@ class VotesController < ApplicationController
         #:link => "http://spothon-vote.heroku.com/spothon_vote",
         :caption => 'Facebook App',
         :description => desc,
-        :picture => "https://s3.amazonaws.com/spothon/images/facebook/share_icon.jpg",
+        :picture => "http://s3.amazonaws.com/spothon/images/facebook/share_icon.jpg",
       }, params[:id] )
       render :post_wall_ok
   end
