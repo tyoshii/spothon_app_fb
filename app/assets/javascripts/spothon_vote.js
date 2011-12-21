@@ -306,6 +306,6 @@ $(function() {
 
   // init
   init();
-  //get_ranking($('.soccer').get(0))
+  get_ranking($('.soccer').get(0))
 });
  
