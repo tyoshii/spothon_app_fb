@@ -17,6 +17,7 @@ class VotesController < ApplicationController
       Facebook::SECRET,
       Facebook::REDIRECT_URL,
     )
+    @auth.url_for_oauth_code(:permissions => "publish_stream")
 
     #@facebook_cookies = @auth.get_user_info_from_cookie(cookies)
     #if @facebook_cookies.nil?
