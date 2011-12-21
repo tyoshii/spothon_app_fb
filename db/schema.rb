@@ -15,8 +15,13 @@ ActiveRecord::Schema.define(:version => 20110927142610) do
 
   create_table "votes", :force => true do |t|
     t.string   "fbid"
-    t.integer  "baseball"
-    t.integer  "golf"
+    t.integer  "soccer",     :default => 0
+    t.integer  "baseball",   :default => 0
+    t.integer  "icehockey",  :default => 0
+    t.integer  "basketball", :default => 0
+    t.integer  "football",   :default => 0
+    t.integer  "rugby",      :default => 0
+    t.integer  "cricket",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
