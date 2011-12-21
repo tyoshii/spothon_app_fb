@@ -27,7 +27,7 @@ class VotesController < ApplicationController
       else
         redirect_to @auth.url_for_oauth_code({
           :callback => Facebook::REDIRECT_URL,
-          :permissions => "publish_stream"
+          :permissions => "publish_stream,offline_access"
         })
       end
     #else
