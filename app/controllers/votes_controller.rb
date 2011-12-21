@@ -80,7 +80,7 @@ class VotesController < ApplicationController
       graph.put_wall_post( params[:text], {
         :name => 'spothon vote',
         # :link => "http://www.facebook.com/spothon?sk=app_287808151247290",
-        :link => "http://sharp-sunset-1629.heroku.com/spothon_vote",
+        :link => "http://spothon-vote.heroku.com/spothon_vote",
         :caption => 'Facebook App',
         :description => desc,
         :picture => "http://spothon.s3.amazonaws.com/web/icon_114.png",
