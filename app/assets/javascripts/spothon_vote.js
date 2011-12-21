@@ -136,6 +136,7 @@ function get_ranking (category_obj) {
         }
 
         var img = obj.find("span.people").find("img");
+        img.attr('src', 'http://spothon.s3.amazonaws.com/images/icon/icon_user.png');
         if ( img ) {
           img.attr('src', 'http://graph.facebook.com/' + user['id'] + '/picture');
         }          
@@ -160,6 +161,7 @@ function get_ranking (category_obj) {
     }
   }); 
 }
+
 
 function get_left_q () {
   return $("#left-question-num").text().substr(0,1);
@@ -304,5 +306,6 @@ $(function() {
 
   // init
   init();
+  get_ranking($('.soccer').get(0))
 });
  
