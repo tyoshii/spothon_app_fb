@@ -1,6 +1,6 @@
 development:
-  app_id: "201956619891184"
-  secret_key: "cd8ca80512b7f06c7f31fc3710978d15"
+  app_id: "328691663809961"
+  secret_key: "f11409a6720087f80aca7528459361fe"
   redirect_url: 'http://localhost:3000/spothon_vote'
 production:
   app_id: "201956619891184"
