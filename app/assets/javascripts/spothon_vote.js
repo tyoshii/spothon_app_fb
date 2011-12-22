@@ -132,7 +132,9 @@ function get_ranking (category_obj) {
         var user = data.shift();
 
         if ( user == undefined ) {
-          return;
+          $(category_obj).parent('li').attr('class', 'on');
+          $(".loading").css("display", "none");
+          return true;
         }
 
         var img = obj.find("span.people").find("img");

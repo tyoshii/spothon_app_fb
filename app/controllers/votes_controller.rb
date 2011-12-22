@@ -57,10 +57,16 @@ class VotesController < ApplicationController
 
   # GET /spothon_vote/ranking
   def ranking
-      graph = Koala::Facebook::API.new( @access_token )
-
       ranking = Hash.new
       ids     = Array.new
+      result = Array.new
+
+      if ! params[:category] then
+        return render :json => result
+      end
+
+      graph = Koala::Facebook::API.new( @access_token )
+
       graph.get_object('me/friends').each{|f|
         ranking[f['id']] = f['name']
         ids.push( f['id'] )
@@ -68,7 +74,6 @@ class VotesController < ApplicationController
   
       score = Vote.select( 'fbid, ' + params[:category] + ' AS point' ).where( :fbid => ids ).order( params[:category] + " desc" ).limit(5)
   
-      result = Array.new
       score.each{|s|
         result.push( :id => s.fbid, :name => ranking[s.fbid], :point => s.point )
       }
